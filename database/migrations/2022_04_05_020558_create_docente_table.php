@@ -32,6 +32,7 @@ class CreateDocenteTable extends Migration
             $table->String('discapacidad');
             $table->String('porcentaje',3)->nullable();
             $table->string('estado',15);
+            $table->date('fecha_suspencion')->nullable();
             $table->timestamps();
         });
     }

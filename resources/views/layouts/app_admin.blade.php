@@ -6,7 +6,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>@yield('title')</title>
-    
+    {{-- Logo Pagina --}}
+    <link rel="icon" href="{{ asset('img/distributivo.ico')}}" >    
     
     <link href="{{ asset('css/admin/sb-admin-2.css') }}" rel="stylesheet">
     {{-- <link href="{{ asset('css/sidebar.css') }}" rel="stylesheet"> --}}

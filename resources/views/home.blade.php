@@ -2,10 +2,6 @@
 
 @section('title','Home')
 
-@section('styles')
-<link href="css/sb-admin-2.min.css" rel="stylesheet">    
-@endsection
-
 @section('content')
     <div class="container ">
     <br>

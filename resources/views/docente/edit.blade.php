@@ -259,12 +259,37 @@
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 {{ Form::label('estado') }}
-                                                <select name="estado" id="estado" class="form-select form-control "  >                      
+                                                <select name="estado" id="estado" class="form-select form-control" onchange="showfecha(this)"  >                      
                                                     <option value="Activo" @if ($docente->estado == "Activo") {{ 'selected' }} @endif >Activo</option>      
                                                     <option value="Suspendido" @if ($docente->estado== "Suspendido") {{ 'selected' }} @endif >Suspendido</option>                   
                                                 </select>
                                             </div>
                                         </div>
+                                        @if (old('estado') || $docente->estado == "Suspendido")
+                                            <div class="col-md-3" id="date_suspendido" style="display: block;">
+                                                <div class="form-group" >
+                                                    {{ Form::label('Fecha Suspención') }}
+                                                    <input id="fecha_suspencion" type="date" name="fecha_suspencion" class="form-control @error('fecha_suspencion') is-invalid @enderror" value="{{ $docente->fecha_suspencion }}"  autofocus>
+                                                    @error('fecha_suspencion')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                        @else
+                                            <div class="col-md-3" id="date_suspendido" style="display: none;">
+                                                <div class="form-group" >
+                                                    {{ Form::label('Fecha Suspención') }}
+                                                    <input id="fecha_suspencion" type="date" name="fecha_suspencion" class="form-control @error('fecha_suspencion') is-invalid @enderror" value="{{ $docente->fecha_suspencion }}"  autofocus>
+                                                    @error('fecha_suspencion')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="row box-footer mt20">
@@ -282,6 +307,13 @@
                                    } else{
                                     document.getElementById('text_porcentaje').style.display = "none";
                                     document.getElementById('espacio').style.display = "block";
+                                   }
+                                } 
+                                function showfecha(select){
+                                   if(select.value=="Suspendido"){
+                                    document.getElementById('date_suspendido').style.display = "block";
+                                   } else{
+                                    document.getElementById('date_suspendido').style.display = "none";
                                    }
                                 } 
                             </script>

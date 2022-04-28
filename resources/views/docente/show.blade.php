@@ -52,7 +52,7 @@
                         </div>
                         <div class="form-group">
                             <strong>Titulo 3 N:</strong>
-                            <textarea >{{ $docente->titulo_3_n }}</textarea> {{-- texto area --}}
+                            {{ $docente->titulo_3_n }}
                             
                         </div>
                         <div class="form-group">
@@ -78,6 +78,10 @@
                         <div class="form-group">
                             <strong>Estado:</strong>
                             {{ $docente->estado }}
+                        </div>
+                        <div class="form-group">
+                            <strong>Fecha Suspendido:</strong>
+                            {{ $docente->fecha_suspencion }}
                         </div>
 
                     </div>

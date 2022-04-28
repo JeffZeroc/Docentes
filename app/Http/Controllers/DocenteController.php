@@ -54,6 +54,14 @@ class DocenteController extends Controller
         }else {
             $request->porcentaje = null;
         }
+
+        if ($request->estado=='Suspendido') {
+            $this->validate($request, [
+                'fecha_suspencion' => 'required',
+            ]); 
+        }else {
+            $request->fecha_suspencion = null;
+        }
         
         $this->validate($request, [
             'nombres' => 'required|string|max:50',
@@ -87,6 +95,7 @@ class DocenteController extends Controller
         $docentes->discapacidad = $request->discapacidad;
         $docentes->porcentaje = $request->porcentaje;
         $docentes->etnia = $request->etnia;
+        $docentes->fecha_suspencion = $request->fecha_suspencion;
 
         //titulo 3
         if ($request->titulo_3_n=='') {
@@ -124,7 +133,7 @@ class DocenteController extends Controller
 
         return redirect()->route('docentes.index')
             ->with('success', 'Docente creado exitosamente.');
-        // return $docentes;
+        //return $docentes;
     }
 
     /**
@@ -170,6 +179,14 @@ class DocenteController extends Controller
             ]); 
         }else {
             $request->porcentaje = null;
+        }
+
+        if ($request->estado=='Suspendido') {
+            $this->validate($request, [
+                'fecha_suspencion' => 'required',
+            ]); 
+        }else {
+            $request->fecha_suspencion = null;
         }
         
         $this->validate($request, [
@@ -217,7 +234,7 @@ class DocenteController extends Controller
         $docentes->direccion = $request->direccion;
         $docentes->correo_institucional = $request->correo_institucional;
         $docentes->correo_personal = $request->correo_personal;
-        
+        $docentes->fecha_suspencion = $request->fecha_suspencion;
         $docentes->estado = $request->estado;
         $docentes->sexo = $request->sexo;
         $docentes->discapacidad = $request->discapacidad;

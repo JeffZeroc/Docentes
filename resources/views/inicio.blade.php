@@ -6,9 +6,6 @@
 
 @endsection
 
-@section('logo')
-<link rel="icon" href="{{ url('img/distributivo.ico') }}">
-@endsection
 
 @section('content')
     
