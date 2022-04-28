@@ -18,8 +18,7 @@ class CreateCarrerasTable extends Migration
             $table->id();
             $table->foreignId('facultad_id')
             ->constrained('facultades')
-            ->onUpdate('cascade')
-            ->onDelete('cascade');
+            ->onUpdate('cascade');
             $table->string('nombre',100);
             $table->string('codigo',15)->unique();
             $table->integer('duracion');

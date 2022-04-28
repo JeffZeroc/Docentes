@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Periodo;
+
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 
@@ -128,8 +129,13 @@ class PeriodoController extends Controller
     public function destroy($id)
     {
         $periodo = Periodo::find($id)->delete();
-
-        return redirect()->route('periodos.index')
-            ->with('success', 'Periodo deleted successfully');
+        try {
+            $periodo->delete();
+            return redirect()->route('facultades.index')
+            ->with('success', 'Facultade deleted successfully');
+        } catch (\Throwable $th) {
+            return redirect()->route('facultades.index')
+            ->with('success', 'No se puede eliminar datos relacionados');
+        }
     }
 }

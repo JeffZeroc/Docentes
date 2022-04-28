@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Carrera;
 use App\Models\Materia;
+
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+
 use Illuminate\Validation\Rule;
 
 /**
@@ -132,9 +133,15 @@ class MateriaController extends Controller
      */
     public function destroy($id)
     {
-        $materia = Materia::find($id)->delete();
+        $materia = Materia::find($id);
 
-        return redirect()->route('materias.index')
-            ->with('success', 'Materia deleted successfully');
+        try {
+            $materia->delete();
+            return redirect()->route('facultades.index')
+            ->with('success', 'Facultade deleted successfully');
+        } catch (\Throwable $th) {
+            return redirect()->route('facultades.index')
+            ->with('success', 'No se puede eliminar datos relacionados');
+        }
     }
 }

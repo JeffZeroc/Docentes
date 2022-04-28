@@ -282,9 +282,15 @@ class DocenteController extends Controller
      */
     public function destroy($id)
     {
-        $docente = Docente::find($id)->delete();
+        $docente = Docente::find($id);
 
-        return redirect()->route('docentes.index')
-            ->with('success', 'Docente deleted successfully');
+        try {
+            $docente->delete();
+            return redirect()->route('facultades.index')
+            ->with('success', 'Facultade deleted successfully');
+        } catch (\Throwable $th) {
+            return redirect()->route('facultades.index')
+            ->with('success', 'No se puede eliminar datos relacionados');
+        }
     }
 }

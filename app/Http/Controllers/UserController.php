@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
@@ -144,9 +145,14 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        $user = User::find($id)->delete();
-
-        return redirect()->route('users.index')
-            ->with('success', 'User deleted successfully');
+        $user = User::find($id);
+        try {
+            $user->delete();
+            return redirect()->route('facultades.index')
+            ->with('success', 'Facultade deleted successfully');
+        } catch (\Throwable $th) {
+            return redirect()->route('facultades.index')
+            ->with('success', 'No se puede eliminar datos relacionados');
+        }
     }
 }

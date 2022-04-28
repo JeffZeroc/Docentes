@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Facultade;
+
+
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 
@@ -118,9 +120,17 @@ class FacultadeController extends Controller
      */
     public function destroy($id)
     {
-        $facultade = Facultade::find($id)->delete();
+        $facultade = Facultade::find($id);
 
-        return redirect()->route('facultades.index')
+        try {
+            $facultade->delete();
+            return redirect()->route('facultades.index')
             ->with('success', 'Facultade deleted successfully');
+        } catch (\Throwable $th) {
+            return redirect()->route('facultades.index')
+            ->with('success', 'No se puede eliminar datos relacionados');
+        }
+        
+        
     }
 }

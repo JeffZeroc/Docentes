@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Carrera;
 use App\Models\Facultade;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 
@@ -141,9 +142,14 @@ class CarreraController extends Controller
      */
     public function destroy($id)
     {
-        $carrera = Carrera::find($id)->delete();
-
-        return redirect()->route('carreras.index')
-            ->with('success', 'Carrera Eliminada exitosamente');
+        $carrera = Carrera::find($id);
+        try {
+            $carrera->delete();
+            return redirect()->route('facultades.index')
+            ->with('success', 'Facultade deleted successfully');
+        } catch (\Throwable $th) {
+            return redirect()->route('facultades.index')
+            ->with('success', 'No se puede eliminar datos relacionados');
+        }
     }
 }

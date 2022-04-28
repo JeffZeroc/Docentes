@@ -19,16 +19,13 @@ class CreateDocenteMateriasTable extends Migration
             $table->id();
             $table->foreignId('docente_id')
             ->constrained('docentes')
-            ->onUpdate('cascade')
-            ->onDelete('cascade');
+            ->onUpdate('cascade');
             $table->foreignId('periodo_id')
             ->constrained('periodos')
-            ->onUpdate('cascade')
-            ->onDelete('cascade');
+            ->onUpdate('cascade');
             $table->foreignId('materia_id')
             ->constrained('materias')
-            ->onUpdate('cascade')
-            ->onDelete('cascade');
+            ->onUpdate('cascade');
             $table->timestamps();
         });
     }
