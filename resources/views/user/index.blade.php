@@ -27,14 +27,6 @@
                         </div>
                     @endif
 
-
-
-
-
-
-
-
-
                     <div class="card-body">
                         <div class="table-responsive">
                             <table id="example" class="table is-striped hover" style="width:100%">
@@ -71,7 +63,7 @@
                                                         @if ( Auth::user()->id == $user->id)
                                                             disabled  
                                                         @endif 
-                                                        onclick="return confirm('Quieres borrar?')" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i></button>
+                                                        onclick="return confirm('¿Estas seguro de eliminar este usuario?')" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i></button>
                                                 </form>
                                             </td>
                                         </tr>

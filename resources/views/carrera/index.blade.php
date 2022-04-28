@@ -63,7 +63,7 @@
                                                     <a class="btn btn-sm btn-success" href="{{ route('carreras.edit',$carrera->id) }}"><i class="fa fa-fw fa-edit"></i> </a>
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> </button>
+                                                    <button type="submit" onclick="return confirm('¿Estas seguro de eliminar el registro?')" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> </button>
                                                 </form>
                                             </td>
                                         </tr>

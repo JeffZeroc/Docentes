@@ -61,7 +61,7 @@
                                                     @if ( Auth::user()->tipo == 'Colaborador')
                                                         disabled
                                                     @endif
-                                                    class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> </button>
+                                                    onclick="return confirm('¿Estas seguro de eliminar el registro?')" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> </button>
                                                 </form>
                                             </td>
                                         </tr>
