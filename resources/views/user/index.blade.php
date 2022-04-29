@@ -15,7 +15,13 @@
                             </span>
 
                              <div class="float-right">
-                                <a href="{{ route('users.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
+                                <a href="{{ route('users.create') }}" 
+                                @if (Auth::user()->tipo == 'Colaborador')
+                                    class="btn btn-primary btn-sm float-right disabled"  
+                                @else
+                                    class="btn btn-primary btn-sm float-right"
+                                @endif  
+                                data-placement="left">
                                   {{ __('Nuevo Usuario') }}
                                 </a>
                               </div>
@@ -51,16 +57,21 @@
                                                 <form action="{{ route('users.destroy',$user->id) }}" method="POST">
                                                     
                                                     <a 
-                                                        @if ( Auth::user()->tipo == 'Colaborador')
-                                                            class="btn btn-sm btn-success disabled"  
-                                                        @else
+                                                        @if ( Auth::user()->id == $user->id )
                                                             class="btn btn-sm btn-success" 
+                                                        @else
+                                                            @if (Auth::user()->tipo == 'Colaborador')
+                                                                class="btn btn-sm btn-success disabled"  
+                                                            @else
+                                                                class="btn btn-sm btn-success" 
+                                                            @endif        
                                                         @endif
+
                                                         href="{{ route('users.edit',$user->id) }}"> <i class="fa fa-fw fa-edit"></i></a>
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" 
-                                                        @if ( Auth::user()->id == $user->id)
+                                                        @if ( Auth::user()->tipo == 'Colaborador' || Auth::user()->id == $user->id )
                                                             disabled  
                                                         @endif 
                                                         onclick="return confirm('¿Estas seguro de eliminar este usuario?')" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i></button>
