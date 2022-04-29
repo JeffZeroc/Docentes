@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Docente;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use PDF;
 
 /**
  * Class DocenteController
@@ -24,6 +25,19 @@ class DocenteController extends Controller
         return view('docente.index', compact('docentes'))
             ->with('i', (request()->input('page', 1) - 1) * $docentes->perPage());
     }
+
+    
+
+    public function pdf($id){
+
+        $docente = Docente::find($id);
+
+        $pdf = PDF::loadView('docente.show',['docente'=>$docente]);
+        $pdf->loadHTML('<h1>Test</h1>');
+        return $pdf->stream();
+        //return view('docente.pdf', compact('docente'));
+    }
+    
 
     /**
      * Show the form for creating a new resource.
@@ -146,7 +160,13 @@ class DocenteController extends Controller
     {
         $docente = Docente::find($id);
 
-        return view('docente.show', compact('docente'));
+        $pdf = PDF::loadView('docente.pdf',['docente'=>$docente]);
+        //$pdf->loadHTML('<h1>Test</h1>');
+        //return $pdf->stream();
+        return $pdf->download('Document_datos_{{$docente->cedula}}.pdf');
+        // $docente = Docente::find($id);
+
+        // return view('docente.show', compact('docente'));
     }
 
     /**

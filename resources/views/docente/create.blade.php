@@ -86,10 +86,12 @@
                                             <div class="form-group">
                                                 {{ Form::label('etnia') }}
                                                 <select name="etnia" id="etnia" class="form-select orm-control "  >                          
-                                                    <option value="Blanco" @if (old('etnia') == "Blanco") {{ 'selected' }} @endif >Blanco</option>      
-                                                    <option value="Mestizo" @if (old('etnia') == "Mestizo") {{ 'selected' }} @endif >Mestizo</option>
-                                                    <option value="Afrodecendiente" @if (old('etnia') == "Afrodecendiente") {{ 'selected' }} @endif >Afrodecendiente</option>
+                                                    <option value="Mestizo" @if (old('etnia') == "Mestizo") {{ 'selected' }} @endif >Mestizo</option>      
                                                     <option value="Montubio" @if (old('etnia') == "Montubio") {{ 'selected' }} @endif >Montubio</option>
+                                                    <option value="AfroEcuatoriano" @if (old('etnia') == "AfroEcuatoriano") {{ 'selected' }} @endif >AfroEcuatoriano</option>
+                                                    <option value="Indígena" @if (old('etnia') == "Indígena") {{ 'selected' }} @endif >Indígena</option>
+                                                    <option value="Blanco" @if (old('etnia') == "Blanco") {{ 'selected' }} @endif >Blanco</option>
+                                                    <option value="Otro" @if (old('etnia') == "Otro") {{ 'selected' }} @endif >Otro</option>
                                                 </select>
                                             </div>
                                         </div>
