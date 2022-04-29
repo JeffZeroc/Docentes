@@ -72,7 +72,9 @@
                                         </div>
                                     </div>
                                 </div>
+                                <br>
                                 <div class="row box-footer mt20">
+                                    
                                     <div class="col-md-12">
                                         <a href="/home/periodos" class="btn btn-secondary">Volver</a>
                                         <button type="submit" class="btn btn-primary">Crear</button>

@@ -292,6 +292,8 @@
                                         @endif
                                     </div>
                                 </div>
+
+                                <br>
                                 <div class="row box-footer mt20">
                                     <div class="col-md-12">
                                         <a href="/home/docentes" class="btn btn-secondary">Volver</a>

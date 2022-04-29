@@ -20,7 +20,7 @@
                         
                         <div class="form-group">
                             <strong>Nombre:</strong>
-                            {{ $docente->nombre }}
+                            {{ $docente->nombres }} {{ $docente->apellidos }}
                         </div>
                         <div class="form-group">
                             <strong>Cedula:</strong>
@@ -71,18 +71,24 @@
                             <strong>Discapacidad:</strong>
                             {{ $docente->discapacidad }}
                         </div>
+                        @if ($docente->discapacidad=='Si')
                         <div class="form-group">
                             <strong>Porcentaje:</strong>
                             {{ $docente->porcentaje }}
                         </div>
+                        @endif
+                        
                         <div class="form-group">
                             <strong>Estado:</strong>
                             {{ $docente->estado }}
                         </div>
+                        @if ($docente->estado=='Suspendido')
                         <div class="form-group">
                             <strong>Fecha Suspendido:</strong>
                             {{ $docente->fecha_suspencion }}
                         </div>
+                        @endif
+                        
 
                     </div>
                 </div>
