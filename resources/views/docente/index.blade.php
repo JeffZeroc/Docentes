@@ -22,12 +22,6 @@
                               </div>
                         </div>
                     </div>
-                    @if ($message = Session::get('success'))
-                        <div class="alert alert-success">
-                            <p>{{ $message }}</p>
-                        </div>
-                    @endif
-
                     <div class="card-body">
                         <table id="example" class="display" style="width:100%">
                                 <thead class="thead">

@@ -51,7 +51,7 @@ class PeriodoController extends Controller
         $periodo = Periodo::create($request->all());
 
         return redirect()->route('periodos.index')
-            ->with('success', 'Periodo created successfully.');
+        ->with('message', 'Registro creado correctamente');
     }
 
     /**
@@ -118,7 +118,7 @@ class PeriodoController extends Controller
         // $periodo->update($request->all());
 
         return redirect()->route('periodos.index')
-            ->with('success', 'Periodo updated successfully');
+        ->with('message', 'Registro actualizado correctamente.');
     }
 
     /**
@@ -131,11 +131,11 @@ class PeriodoController extends Controller
         $periodo = Periodo::find($id)->delete();
         try {
             $periodo->delete();
-            return redirect()->route('facultades.index')
-            ->with('success', 'Facultade deleted successfully');
+            return redirect()->route('periodos.index')
+            ->with('message', 'Registro eliminado correctamente');
         } catch (\Throwable $th) {
-            return redirect()->route('facultades.index')
-            ->with('success', 'No se puede eliminar datos relacionados');
+            return redirect()->route('periodos.index')
+            ->with('danger', 'Registro relacionado, imposible de eliminar');
         }
     }
 }

@@ -132,7 +132,7 @@ class DocenteController extends Controller
         // $docente = Docente::create($request->all());
 
         return redirect()->route('docentes.index')
-            ->with('success', 'Docente creado exitosamente.');
+        ->with('message', 'Registro creado correctamente');
         //return $docentes;
     }
 
@@ -272,7 +272,7 @@ class DocenteController extends Controller
         // $docentes->update($request->all());
 
         return redirect()->route('docentes.index')
-            ->with('success', 'Docente updated successfully');
+            ->with('message', 'Registro actualizado correctamente.');
     }
 
     /**
@@ -282,15 +282,11 @@ class DocenteController extends Controller
      */
     public function destroy($id)
     {
-        $docente = Docente::find($id);
-
-        try {
-            $docente->delete();
-            return redirect()->route('facultades.index')
-            ->with('success', 'Facultade deleted successfully');
-        } catch (\Throwable $th) {
-            return redirect()->route('facultades.index')
-            ->with('success', 'No se puede eliminar datos relacionados');
-        }
+        $docente = Docente::find($id)->delete();
+        
+        return redirect()->route('docentes.index')
+        ->with('message', 'Registro eliminado correctamente.');
+        
+        
     }
 }

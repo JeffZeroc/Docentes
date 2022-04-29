@@ -51,7 +51,7 @@ class FacultadeController extends Controller
         $facultade = Facultade::create($request->all());
 
         return redirect()->route('facultades.index')
-            ->with('success', 'Facultade created successfully.');
+        ->with('message', 'Registro creado correctamente');
     }
 
     /**
@@ -110,7 +110,7 @@ class FacultadeController extends Controller
         // $facultade->update($request->all());
 
         return redirect()->route('facultades.index')
-            ->with('success', 'Facultade updated successfully');
+        ->with('message', 'Registro actualizado correctamente.');
     }
 
     /**
@@ -125,10 +125,10 @@ class FacultadeController extends Controller
         try {
             $facultade->delete();
             return redirect()->route('facultades.index')
-            ->with('success', 'Facultade deleted successfully');
+            ->with('message', 'Registro eliminado correctamente');
         } catch (\Throwable $th) {
             return redirect()->route('facultades.index')
-            ->with('success', 'No se puede eliminar datos relacionados');
+            ->with('danger', 'Registro relacionado, imposible de eliminar');
         }
         
         

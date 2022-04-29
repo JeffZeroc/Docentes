@@ -54,7 +54,7 @@ class DocenteMateriaController extends Controller
         $docenteMateria = DocenteMateria::create($request->all());
 
         return redirect()->route('docente-materias.index')
-            ->with('success', 'DocenteMateria created successfully.');
+        ->with('message', 'Registro creado correctamente');
     }
 
     /**
@@ -101,7 +101,7 @@ class DocenteMateriaController extends Controller
         $docenteMateria->update($request->all());
 
         return redirect()->route('docente-materias.index')
-            ->with('success', 'DocenteMateria updated successfully');
+        ->with('message', 'Registro actualizado correctamente.');
     }
 
     /**
@@ -111,15 +111,14 @@ class DocenteMateriaController extends Controller
      */
     public function destroy($id)
     {
-        $docenteMateria = DocenteMateria::find($id);
+        $docenteMateria = DocenteMateria::find($id)->delete();
 
-        try {
-            $docenteMateria->delete();
-            return redirect()->route('facultades.index')
-            ->with('success', 'Facultade deleted successfully');
-        } catch (\Throwable $th) {
-            return redirect()->route('facultades.index')
-            ->with('success', 'No se puede eliminar datos relacionados');
-        }
+        
+
+            return redirect()->route('docente-materias.index')
+            ->with('message', 'Registro eliminado correctamente');
+            
+            
+        
     }
 }

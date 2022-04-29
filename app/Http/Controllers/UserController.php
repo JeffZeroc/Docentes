@@ -62,7 +62,7 @@ class UserController extends Controller
 
 
         return redirect()->route('users.index')
-            ->with('success', 'User created successfully.');
+            ->with('message', 'Registro creado correctamente');
     }
 
     /**
@@ -134,7 +134,7 @@ class UserController extends Controller
         //$user->update($request->all());
 
         return redirect()->route('users.index')
-            ->with('success', 'User updated successfully');
+        ->with('message', 'Registro actualizado correctamente.');
         //return $usuario;
     }
 
@@ -145,14 +145,10 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        $user = User::find($id);
-        try {
-            $user->delete();
-            return redirect()->route('facultades.index')
-            ->with('success', 'Facultade deleted successfully');
-        } catch (\Throwable $th) {
-            return redirect()->route('facultades.index')
-            ->with('success', 'No se puede eliminar datos relacionados');
-        }
+        $user = User::find($id)->delete();
+        
+        return redirect()->route('users.index')
+        ->with('message', 'Registro eliminado correctamente');
+        
     }
 }

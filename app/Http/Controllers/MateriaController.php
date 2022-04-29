@@ -56,7 +56,7 @@ class MateriaController extends Controller
         $materia = Materia::create($request->all());
 
         return redirect()->route('materias.index')
-            ->with('success', 'Materia created successfully.');
+        ->with('message', 'Registro creado correctamente');
     }
 
     /**
@@ -123,7 +123,7 @@ class MateriaController extends Controller
         // $materia->update($request->all());
 
         return redirect()->route('materias.index')
-            ->with('success', 'Materia updated successfully');
+        ->with('message', 'Registro actualizado correctamente.');
     }
 
     /**
@@ -137,11 +137,11 @@ class MateriaController extends Controller
 
         try {
             $materia->delete();
-            return redirect()->route('facultades.index')
-            ->with('success', 'Facultade deleted successfully');
+            return redirect()->route('materias.index')
+            ->with('message', 'Registro eliminado correctamente');
         } catch (\Throwable $th) {
-            return redirect()->route('facultades.index')
-            ->with('success', 'No se puede eliminar datos relacionados');
+            return redirect()->route('materias.index')
+            ->with('danger', 'Registro relacionado, imposible de eliminar');
         }
     }
 }

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Carrera;
 use App\Models\Facultade;
-use Illuminate\Database\QueryException;
+
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 
@@ -66,7 +66,7 @@ class CarreraController extends Controller
         // $carrera = Carrera::create($request->all());
 
         return redirect()->route('carreras.index')
-            ->with('success', 'Carrera created successfully.');
+        ->with('message', 'Registro creado correctamente');
     }
 
     /**
@@ -131,7 +131,7 @@ class CarreraController extends Controller
         $carreras->save();
 
         return redirect()->route('carreras.index')
-            ->with('success', 'Carrera Actualizada exitosamente');
+            ->with('message', 'Registro actualizado correctamente.');
         
     }
 
@@ -145,11 +145,11 @@ class CarreraController extends Controller
         $carrera = Carrera::find($id);
         try {
             $carrera->delete();
-            return redirect()->route('facultades.index')
-            ->with('success', 'Facultade deleted successfully');
+            return redirect()->route('carreras.index')
+            ->with('message', 'Registro eliminado correctamente');
         } catch (\Throwable $th) {
-            return redirect()->route('facultades.index')
-            ->with('success', 'No se puede eliminar datos relacionados');
+            return redirect()->route('carreras.index')
+            ->with('danger', 'Registro relacionado, imposible de eliminar');
         }
     }
 }
