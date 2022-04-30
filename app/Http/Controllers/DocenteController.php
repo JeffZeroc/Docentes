@@ -162,8 +162,8 @@ class DocenteController extends Controller
 
         $pdf = PDF::loadView('docente.pdf',['docente'=>$docente]);
         //$pdf->loadHTML('<h1>Test</h1>');
-        //return $pdf->stream();
-        return $pdf->download('Document_datos_{{$docente->cedula}}.pdf');
+        return $pdf->stream();
+        // return $pdf->download('Document_datos_{{$docente->cedula}}.pdf');
         // $docente = Docente::find($id);
 
         // return view('docente.show', compact('docente'));

@@ -81,7 +81,7 @@ class MateriaController extends Controller
     public function edit($id)
     {
         $materia = Materia::find($id);
-        $carreras = Carrera::pluck('nombre','id');
+        $carreras = Carrera::get();
         return view('materia.edit', compact('materia','carreras'));
     }
 
