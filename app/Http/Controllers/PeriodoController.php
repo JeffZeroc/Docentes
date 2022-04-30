@@ -128,7 +128,7 @@ class PeriodoController extends Controller
      */
     public function destroy($id)
     {
-        $periodo = Periodo::find($id)->delete();
+        $periodo = Periodo::find($id);
         try {
             $periodo->delete();
             return redirect()->route('periodos.index')

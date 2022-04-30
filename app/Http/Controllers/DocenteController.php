@@ -302,11 +302,18 @@ class DocenteController extends Controller
      */
     public function destroy($id)
     {
-        $docente = Docente::find($id)->delete();
+        $docente = Docente::find($id);
         
         return redirect()->route('docentes.index')
         ->with('message', 'Registro eliminado correctamente.');
         
-        
+        try {
+            $docente->delete();
+            return redirect()->route('docentes.index')
+            ->with('message', 'Registro eliminado correctamente.');
+        } catch (\Throwable $th) {
+            return redirect()->route('docentes.index')
+            ->with('danger', 'Registro relacionado, imposible de eliminar');
+        }
     }
 }
