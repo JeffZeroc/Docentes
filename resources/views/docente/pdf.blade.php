@@ -14,7 +14,7 @@
 
         <div class="card-body">
             <div class="form-group cemter">
-                <strong>Información Docente de la Universidad Técnica Luis Vargas Torres Ext La Concordia</strong>
+                <strong>Información Docente de la Universidad Técnica Luis Vargas Torres Sede Santo Domingo</strong>
                 
                 
 
