@@ -31,78 +31,49 @@
                             <img src="img/utelvt.png" width="60" alt="">
                         <span>UTELVT</span></a>
 
-                        <a class="nav-link disabled" href=""></a>
+                        
                         
                         <a class="nav-link disabled mt-lg-3" href="#">
                             <span> SISTEMA GESTOR DISTRIBUTIVO DE DOCENTES</span></a>
 
-                        <a class="nav-link mt-lg-3">
+                        <div class="nav-link">
                             @guest
-                            @if (Route::has('login'))
-                                    <a class="nav-link mt-lg-3" href="{{ route('login') }}"> {{ __('Login') }}</a>
-                            @endif
-                            {{-- 
-                            @if (Route::has('register'))
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{route('register')}}">{{ __('Register')}}</a>
-                            </li>
-                            @endif --}}
-                            @else
-                                <li class="nav dropdown no-arrow">
-                                    <a class="nav dropdown-toggle" id="userDropdown" role="button"
-                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ Auth::user()->name }}</span>
+                                @if (Route::has('login'))
+                                    
+                                <a class="nav-link mt-lg-2" href="{{ route('login') }}"> {{ __('Login') }}</a>
+                                    
+                                @endif
+                                {{-- 
+                                @if (Route::has('register'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{route('register')}}">{{ __('Register')}}</a>
+                                </li>
+                                @endif --}}
+
+                                @else
+                                <div class="dropdown nav-link mt-lg-2">
+                                    <a class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <span class="mr-2 d-none d-lg-inline text-white-600 small">{{ Auth::user()->name }}</span>
                                         <img class="img-profile rounded-circle" src="/img/docente.png" height="25" width="25">
                                     </a>
-                                    <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                                        <a class="dropdown-item" href="/home/registro">
-                                            <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                            Agregar Usuario
-                                        </a>
-                                        <a class="dropdown-item" href="/home/usuarios">
-                                            <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                                            Lista Usuarios
-                                        </a>
+                                    <ul class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="dropdownMenuButton1">
+                                        <li><a class="dropdown-item" href="/home/users"><i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                            Usuarios</a></li>
                                         <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" data-toggle="modal" data-target="#logoutModal" href="#">
+                                        <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#exampleModal" href="#">
                                             <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                             {{ __('Cerrar Sesión') }}
-                                        </a>
-                                        
-                                    </div>
-                                </li>                            
+                                        </a></li>
+                                    </ul>
+                                </div>
+                                    
                             @endguest
-                        </a>
+                            </div>
                       </nav>
                     
 
 
-                    {{-- <nav class="navbar  navbar-expand navbar-light bg-white topbar mb-3 static-top shadow">
-                        <div class="container-fluid">
-                        
-                            <a class="navbar-brand" href="/inicio">
-                                <img src="img/utelvt.png" width="60" alt="">
-                            <span>UTELVT</span></a>
-                            <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-                                <ul class="nav justify-content-center">
-                                    <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="#">Active</a>
-                                    </li>
-                                    <li class="nav-item">
-                                    <a class="nav-link" href="#">Link</a>
-                                    </li>
-                                    <li class="nav-item">
-                                    <a class="nav-link" href="#">Link</a>
-                                    </li>
-                                    <li class="nav-item">
-                                    <a class="nav-link disabled">Disabled</a>
-                                    </li>
-                                </ul>
-                                @include('partials.topbar')
-                            </div>
-                        </div>
-                        
-                    </nav> --}}
+                    
                 
                     <!-- Begin Page Content -->
                     <div class="container-fluid">
@@ -120,6 +91,26 @@
     
             </div>
             <!-- End of Content Wrapper -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">¿Listo para salir?</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Seleccione "Cerrar sesión" a continuación si está listo para finalizar su sesión actual.
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <a class="btn btn-primary" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Cerrar Sesión</a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
+                    </div>
+                </div>
+                </div>
+            </div>
     
         </div>
         <!-- Custom scripts for all pages-->
