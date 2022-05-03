@@ -10,16 +10,10 @@
         
         <br>
         <DIv class="row justify-content-center">
-            <h4>SISTEMA GESTOR DISTRIBUTIVO DE DOCENTES</h4>
+            
         </DIv>
-        
-       
-        <div class="row justify-content-center">
-            <h4>UTELVT SEDE SANTO DOMINGO</h4>
-           
-        </div>
         <div>
-          <img src="../../img/distributivo.png" width="35%" alt="">
+          <img src="../../img/SGRD.png" width="60%" alt="">
                                     
         </div>
         

@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     {{-- Logo Pagina --}}
-    <link rel="icon" href="{{ asset('img/distributivo.ico')}}" > 
+    <link rel="icon" href="{{ asset('img/ICOUTE.ico')}}" >    
     <link href="{{ asset('css/admin/sb-admin-2.css') }}" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css" rel="stylesheet">
@@ -21,11 +21,13 @@
             <div class="row justify-content-center">
                 <div class="col-xl-5 col-lg-6 col-md-6">
                     <div class="card 0-hidden border-0 shadow-lg my-1">
+                        
                         <div class="card-body ">
                             <!-- Nested Row within Card Body -->
                             <div class="">
+                                <br> 
                                 <div class="text-center">
-                                    <img src="img/distributibo.png" width="35%" alt="">
+                                    <img src="img/SGRD.png" width="35%" alt="">
                                     <br> 
                                     <br> 
                                 </div>

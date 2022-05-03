@@ -4,11 +4,10 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         {{-- Logo Pagina --}}
-        <link rel="icon" href="{{ asset('img/distributivo.ico')}}" >    
+        <link rel="icon" href="{{ asset('img/ICOUTE.ico')}}" >       
         
         <!-- CSRF Token -->
-        <meta name="csrf-token" content="{{ csrf_token() }}">
-        @yield('logo')
+        <meta name="csrf-token" content="{{ csrf_token() }}">  
         <title>@yield('title')</title>
     
         @include('partials.head_scripts')

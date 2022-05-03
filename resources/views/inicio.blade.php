@@ -2,9 +2,6 @@
 
 @section('title','Inicio')
 
-@section('styles')
-
-@endsection
 
 
 @section('content')
