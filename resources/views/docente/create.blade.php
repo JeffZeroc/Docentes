@@ -22,7 +22,7 @@
                                     
                             
                                     <div class="row">
-                                        <div class="col-md-4">
+                                        <div class="col-md-3">
                                             <div class="form-group">
                                                 {{ Form::label('Nombres') }}
                                                 <input id="nombres" type="text" name="nombres" class="form-control @error('nombres') is-invalid @enderror" value="{{  old('nombres') }}" placeholder="Nombres" autofocus>
@@ -33,7 +33,7 @@
                                                 @enderror 
                                             </div>
                                         </div>
-                                        <div class="col-md-4">
+                                        <div class="col-md-3">
                                             <div class="form-group">
                                                 {{ Form::label('Apellidos') }}
                                                 <input id="apellidos" type="text" name="apellidos" class="form-control @error('apellidos') is-invalid @enderror" value="{{  old('apellidos') }}" placeholder="Apellidos" autofocus>
@@ -44,7 +44,7 @@
                                                 @enderror 
                                             </div>
                                         </div>
-                                        <div class="col-md-4">
+                                        <div class="col-md-3">
                                             <div class="form-group">
                                                 {{ Form::label('cedula') }}
                                                 <input id="cedula" type="text" name="cedula" class="form-control @error('cedula') is-invalid @enderror" value="{{  old('cedula') }}" placeholder="Cedula" autofocus>
@@ -54,6 +54,17 @@
                                                     </span>
                                                 @enderror 
                                                 
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3" >
+                                            <div class="form-group" >
+                                                {{ Form::label('Fecha Nacimiento') }}
+                                                <input id="fecha_nacimiento" type="date" name="fecha_nacimiento" class="form-control @error('fecha_nacimiento') is-invalid @enderror" value="{{ old('fecha_nacimiento') }}"  autofocus>
+                                                @error('fecha_nacimiento')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
                                             </div>
                                         </div>
                                     </div>

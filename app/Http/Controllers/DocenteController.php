@@ -83,6 +83,7 @@ class DocenteController extends Controller
             'cedula' => 'required|digits:10|unique:docentes',
             'celular' => 'required|digits:10|unique:docentes',
             'direccion' => 'required|max:255',
+            'fecha_nacimiento' => 'required',
             'correo_institucional' => 'required|email:rfc,dns|max:50|unique:docentes',
             'correo_personal' => 'required|email:rfc,dns|max:50|unique:docentes',
             'sexo' => 'required|max:10',
@@ -101,6 +102,7 @@ class DocenteController extends Controller
         $docentes->cedula = $request->cedula;
         $docentes->celular = $request->celular;
         $docentes->direccion = $request->direccion;
+        $docentes->fecha_nacimiento = $request->fecha_nacimiento;
         $docentes->correo_institucional = $request->correo_institucional;
         $docentes->correo_personal = $request->correo_personal;
         
@@ -237,6 +239,7 @@ class DocenteController extends Controller
             ],
             'direccion' => 'required|max:255',
             'sexo' => 'required|max:9',
+            'fecha_nacimiento' => 'required',
             'etnia' => 'required|max:20',
             'titulo_3_n' => '',
             'titulo_4_n' => '',
@@ -252,6 +255,7 @@ class DocenteController extends Controller
         $docentes->cedula = $request->cedula;
         $docentes->celular = $request->celular;
         $docentes->direccion = $request->direccion;
+        $docentes->fecha_nacimiento = $request->fecha_nacimiento;
         $docentes->correo_institucional = $request->correo_institucional;
         $docentes->correo_personal = $request->correo_personal;
         $docentes->fecha_suspencion = $request->fecha_suspencion;

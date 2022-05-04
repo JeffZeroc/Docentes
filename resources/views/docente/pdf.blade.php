@@ -30,6 +30,11 @@
             </div>
             <br>
             <div class="form-group">
+                <strong>Fecha Nacimiento:  </strong>
+                {{ $docente->fecha_nacimiento }} 
+            </div>
+            <br>
+            <div class="form-group">
                 <strong>Cedula:   </strong>
                 {{ $docente->cedula }}
             </div>

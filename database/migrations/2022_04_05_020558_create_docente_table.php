@@ -20,6 +20,7 @@ class CreateDocenteTable extends Migration
             $table->string('apellidos');
             $table->string('cedula',10)->unique();
             $table->string('celular',10);
+            $table->date('fecha_nacimiento');
             $table->string('direccion');
             $table->string('correo_institucional',50);
             $table->string('correo_personal',50);
