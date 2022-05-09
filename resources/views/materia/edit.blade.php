@@ -6,7 +6,7 @@
     <section class="content container-fluid">
         <div class="">
             <div class="col-md-12">
-
+                
                 @includeif('partials.errors')
 
                 <div class="card card-default">
@@ -23,9 +23,8 @@
                                     <div class="row">
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                {{ Form::label('carrera') }}
-                                                {{-- {{ Form::select('carrera_id',$carreras, $materia->carrera_id, ['class' => 'form-control' . ($errors->has('docente_id') ? ' is-invalid' : '')]) }} --}}
-                                                <select name="carrera_id" id="carrera_id" class="form-select form-control @error('carrera_id') is-invalid @enderror">
+                                                <label> Carrera</label>
+                                                <select name="carrera_id" id="carrera_id" class="form-select form-control @error('carrera_id') is-invalid @enderror " >
                                                     @foreach ( $carreras as $carrera)
                                                         <option value="{{$carrera->id}}" 
                                                             @if (old('carrera_id') == null)
@@ -37,7 +36,7 @@
                                                                     {{ 'selected' }}
                                                                 @endif
                                                             @endif>
-                                                            {{ $carrera->nombre}}
+                                                            {{ $carrera->duracion}}
                                                         </option>
                                                     @endforeach
                                                 </select>
@@ -48,10 +47,24 @@
                                                 @enderror 
                                             </div>
                                         </div>
+                                        
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                {{ Form::label('nombre') }}
-                                                <input id="nombre" type="text" name="nombre" class="form-control @error('nombre') is-invalid @enderror" value="{{  $materia->nombre }}" placeholder="Nombre" autofocus>
+                                                <label> Nivel</label>
+                                                <select name="nivel" id="nivel" class="form-select form-control @error('nivel') is-invalid @enderror">
+                                                                                                       
+                                                </select>
+                                                @error('nivel')
+                                                    <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror 
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label> Nombre</label>
+                                                <input id="nombre" type="text" name="nombre" class="form-control @error('nombre') is-invalid @enderror" value="{{  $materia->nombre }}" placeholder="Nombre Asignatura" autofocus>
                                                 @error('nombre')
                                                     <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -59,10 +72,13 @@
                                                 @enderror 
                                             </div>
                                         </div>
+                                        
+                                    </div>
+                                    <div class="row">
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                {{ Form::label('codigo') }}
-                                                <input id="codigo" type="text" name="codigo" class="form-control @error('codigo') is-invalid @enderror" value="{{  $materia->codigo }}" placeholder="Codigo" autofocus>
+                                                <label> Código</label>
+                                                <input id="codigo" type="text" name="codigo" class="form-control @error('codigo') is-invalid @enderror" value="{{  $materia->codigo }}" placeholder="Código Asignatura" autofocus>
                                                 @error('codigo')
                                                     <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -70,12 +86,10 @@
                                                 @enderror 
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="row">
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                {{ Form::label('Horas Autonomas') }}
-                                                <input id="hora_a" type="text" name="hora_a" class="form-control @error('hora_a') is-invalid @enderror" value="{{  $materia->hora_a }}" placeholder="Horas Autonomas" autofocus>
+                                                <label> Horas Autonomas</label>
+                                                <input id="hora_a" type="text" name="hora_a" class="form-control @error('hora_a') is-invalid @enderror" value="{{  $materia->hora_a }}" placeholder="1-70" autofocus>
                                                 @error('hora_a')
                                                     <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -85,20 +99,9 @@
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                {{ Form::label('Horas Precenciales') }}
-                                                <input id="hora_p" type="text" name="hora_p" class="form-control @error('hora_p') is-invalid @enderror" value="{{  $materia->hora_p }}" placeholder="Horas Precenciales" autofocus>
+                                                <label> Horas Presenciales</label>
+                                                <input id="hora_p" type="text" name="hora_p" class="form-control @error('hora_p') is-invalid @enderror" value="{{  $materia->hora_p }}" placeholder="1-70" autofocus>
                                                 @error('hora_p')
-                                                    <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                    </span>
-                                                @enderror 
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                {{ Form::label('Horas Docentes') }}
-                                                <input id="hora_d" type="text" name="hora_d" class="form-control @error('hora_d') is-invalid @enderror" value="{{  $materia->hora_d }}" placeholder="Horas Docentes" autofocus>
-                                                @error('hora_d')
                                                     <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
                                                     </span>

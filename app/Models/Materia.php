@@ -27,11 +27,12 @@ class Materia extends Model
     
     static $rules = [
 		'carrera_id' => 'required',
+        'nivel' => 'required|numeric',
             'nombre' => 'required|max:255',
             'codigo' => 'required|string|max:15|unique:materias',
             'hora_a' => 'required|numeric',
             'hora_p' => 'required|numeric',
-            'hora_d' => 'required|numeric',
+            
     ];
 
     protected $perPage = 20;
@@ -41,7 +42,7 @@ class Materia extends Model
      *
      * @var array
      */
-    protected $fillable = ['carrera_id','nombre','codigo','hora_a','hora_p','hora_d'];
+    protected $fillable = ['carrera_id','nombre','codigo','hora_a','hora_p','nivel'];
 
 
     /**

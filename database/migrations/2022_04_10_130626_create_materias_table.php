@@ -20,14 +20,12 @@ class CreateMateriasTable extends Migration
             $table->foreignId('carrera_id')
             ->constrained('carreras')
             ->onUpdate('cascade');
+            $table->integer('nivel');
             $table->string('nombre');
             $table->string('codigo',15)->unique();
             $table->integer('hora_a');
             $table->integer('hora_p');
-            $table->integer('hora_d');
             $table->timestamps();
-            
-            
         });
     }
 

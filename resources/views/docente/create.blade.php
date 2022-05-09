@@ -24,7 +24,7 @@
                                     <div class="row">
                                         <div class="col-md-3">
                                             <div class="form-group">
-                                                {{ Form::label('Nombres') }}
+                                                <label>Nombres </label> 
                                                 <input id="nombres" type="text" name="nombres" class="form-control @error('nombres') is-invalid @enderror" value="{{  old('nombres') }}" placeholder="Nombres" autofocus>
                                                 @error('nombres')
                                                     <span class="invalid-feedback" role="alert">
@@ -35,7 +35,7 @@
                                         </div>
                                         <div class="col-md-3">
                                             <div class="form-group">
-                                                {{ Form::label('Apellidos') }}
+                                                <label> Apellidos</label>
                                                 <input id="apellidos" type="text" name="apellidos" class="form-control @error('apellidos') is-invalid @enderror" value="{{  old('apellidos') }}" placeholder="Apellidos" autofocus>
                                                 @error('apellidos')
                                                     <span class="invalid-feedback" role="alert">
@@ -46,7 +46,7 @@
                                         </div>
                                         <div class="col-md-3">
                                             <div class="form-group">
-                                                {{ Form::label('cedula') }}
+                                                <label>Cedula </label>
                                                 <input id="cedula" type="text" name="cedula" class="form-control @error('cedula') is-invalid @enderror" value="{{  old('cedula') }}" placeholder="Cedula" autofocus>
                                                 @error('cedula')
                                                     <span class="invalid-feedback" role="alert">
@@ -58,7 +58,7 @@
                                         </div>
                                         <div class="col-md-3" >
                                             <div class="form-group" >
-                                                {{ Form::label('Fecha Nacimiento') }}
+                                                <label> Fecha Nacimiento</label>
                                                 <input id="fecha_nacimiento" type="date" name="fecha_nacimiento" class="form-control @error('fecha_nacimiento') is-invalid @enderror" value="{{ old('fecha_nacimiento') }}"  autofocus>
                                                 @error('fecha_nacimiento')
                                                     <span class="invalid-feedback" role="alert">
@@ -71,7 +71,7 @@
                                     <div class="row">
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                {{ Form::label('celular') }}
+                                                <label> Celular</label>
                                                 <input id="celular" type="text" name="celular" class="form-control @error('celular') is-invalid @enderror" value="{{  old('celular') }}" placeholder="Celular" autofocus>
                                                 @error('celular')
                                                     <span class="invalid-feedback" role="alert">
@@ -83,7 +83,7 @@
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                {{ Form::label('Sexo') }}
+                                                <label> Género </label>
                                                 <select name="sexo" id="sexo" class="form-select form-control "  >
                                                                                 
                                                     <option value="Masculino" @if (old('sexo') == "Masculino") {{ 'selected' }} @endif >Masculino</option>      
@@ -95,7 +95,7 @@
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                {{ Form::label('etnia') }}
+                                                <label> Etnia</label>
                                                 <select name="etnia" id="etnia" class="form-select orm-control "  >                          
                                                     <option value="Mestizo" @if (old('etnia') == "Mestizo") {{ 'selected' }} @endif >Mestizo</option>      
                                                     <option value="Montubio" @if (old('etnia') == "Montubio") {{ 'selected' }} @endif >Montubio</option>
@@ -111,7 +111,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 
-                                                {{ Form::label('correo_institucional') }}
+                                                <label> Correo Institucional</label>
                                                 <input id="correo_institucional" type="text" name="correo_institucional" class="form-control @error('correo_institucional') is-invalid @enderror" value="{{  old('correo_institucional') }}" placeholder="Example@utelvt.edu.ec" autofocus>
                                                 @error('correo_institucional')
                                                     <span class="invalid-feedback" role="alert">
@@ -122,7 +122,7 @@
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                {{ Form::label('correo_personal') }}
+                                                <label>Correo Personal </label>
                                                 <input id="correo_personal" type="text" name="correo_personal" class="form-control @error('correo_personal') is-invalid @enderror" value="{{  old('correo_personal') }}" placeholder="Example@gmail.com" autofocus>
                                                 @error('correo_personal')
                                                     <span class="invalid-feedback" role="alert">
@@ -135,7 +135,7 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                {{ Form::label('direccion de domicilio') }}
+                                                <label> Dirección Domicilio</label>
                                                 <input id="direccion" type="text" name="direccion" class="form-control @error('direccion') is-invalid @enderror" value="{{  old('direccion') }}" placeholder="Dirección de Domicilio" autofocus>
                                                 @error('direccion')
                                                     <span class="invalid-feedback" role="alert">
@@ -148,7 +148,7 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                {{ Form::label('titulos 3 Nivel') }}
+                                                <label> Titulos 3 nivel</label>
                                                 <input id="titulo_3_n" type="text" name="titulo_3_n" class="form-control @error('titulo_3_n') is-invalid @enderror" value="{{  old('titulo_3_n') }}" placeholder="Titulos" autofocus>
                                                 @error('titulo_3_n')
                                                     <span class="invalid-feedback" role="alert">
@@ -162,7 +162,7 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                {{ Form::label('titulos 4 nivel') }}
+                                                <label> Titulos 4 nivel</label>
                                                 <input id="titulo_4_n" type="text" name="titulo_4_n" class="form-control @error('titulo_4_n') is-invalid @enderror" value="{{  old('titulo_4_n') }}" placeholder="Titulos" autofocus>
                                                 @error('titulo_4_n')
                                                     <span class="invalid-feedback" role="alert">
@@ -176,7 +176,7 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                {{ Form::label('doctorado') }}
+                                                <label> Doctorado</label>
                                                 <input id="doctorado" type="text" name="doctorado" class="form-control @error('doctorado') is-invalid @enderror" value="{{  old('doctorado') }}" placeholder="Doctorado" autofocus>
                                                 @error('doctorado')
                                                     <span class="invalid-feedback" role="alert">
@@ -190,7 +190,7 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                {{ Form::label('phd') }}
+                                                <label> PHD</label>
                                                 <input id="phd" type="text" name="phd" class="form-control @error('phd') is-invalid @enderror" value="{{  old('phd') }}" placeholder="PHD" autofocus>
                                                 @error('phd')
                                                     <span class="invalid-feedback" role="alert">
@@ -203,7 +203,7 @@
                                     <div class="row">
                                         <div class="col-md-2">
                                             <div class="form-group ">
-                                                {{ Form::label('discapacidad') }}
+                                                <label> Discapacidad</label>
                                                 <select name="discapacidad" id="discapacidad" class="form-select form-control" onchange="showDiv(this)">                          
                                                     <option value="No" @if (old('discapacidad') == "No") {{ 'selected' }} @endif >No</option>      
                                                     <option value="Si" @if (old('discapacidad') == "Si") {{ 'selected' }} @endif >SI</option>
@@ -218,7 +218,7 @@
                                         @if (old('discapacidad') == "Si")
                                             <div class="col-md-1" id="text_porcentaje" style="display: block;">
                                                 <div class="form-group" >
-                                                    {{ Form::label('Porcentaje') }}
+                                                    <label> Porcentaje</label>
                                                     <input id="porcentaje" type="text" name="porcentaje" class="form-control @error('porcentaje') is-invalid @enderror" value="{{ old('porcentaje') }}" placeholder="%" autofocus>
                                                     @error('porcentaje')
                                                         <span class="invalid-feedback" role="alert">
@@ -233,7 +233,7 @@
                                         @else
                                             <div class="col-md-1" id="text_porcentaje" style="display: none;">
                                                 <div class="form-group" >
-                                                    {{ Form::label('Porcentaje') }}
+                                                    <label> Porcentaje</label>
                                                     <input id="porcentaje" type="text" name="porcentaje" class="form-control @error('porcentaje') is-invalid @enderror" value="{{ $docente->porcentaje }}" placeholder="%" autofocus>
                                                     @error('porcentaje')
                                                         <span class="invalid-feedback" role="alert">
@@ -252,7 +252,7 @@
                                                  
                                         <div class="col-md-3">
                                             <div class="form-group">
-                                                {{ Form::label('estado') }}
+                                                <label> Estado</label>
                                                 <select name="estado" id="estado" class="form-select form-control "  onchange="showfecha(this)">                      
                                                     <option value="Activo" @if (old('estado') == "Activo") {{ 'selected' }} @endif >Activo</option>      
                                                     <option value="Suspendido" @if (old('estado') == "Suspendido") {{ 'selected' }} @endif >Suspendido</option>                   
@@ -262,7 +262,7 @@
                                         @if (old('estado') == "Suspendido")
                                             <div class="col-md-3" id="date_suspendido" style="display: block;">
                                                 <div class="form-group" >
-                                                    {{ Form::label('Fecha Suspención') }}
+                                                    <label> Fecha Suspención</label>
                                                     <input id="fecha_suspencion" type="date" name="fecha_suspencion" class="form-control @error('fecha_suspencion') is-invalid @enderror" value="{{ old('fecha_suspencion') }}"  autofocus>
                                                     @error('fecha_suspencion')
                                                         <span class="invalid-feedback" role="alert">
@@ -275,7 +275,7 @@
                                         @else
                                             <div class="col-md-3" id="date_suspendido" style="display: none;">
                                                 <div class="form-group" >
-                                                    {{ Form::label('Fecha Suspención') }}
+                                                    <label> Fecha Suspención</label>
                                                     <input id="fecha_suspencion" type="date" name="fecha_suspencion" class="form-control @error('fecha_suspencion') is-invalid @enderror" value="{{ $docente->fecha_suspencion }}"  autofocus>
                                                     @error('fecha_suspencion')
                                                         <span class="invalid-feedback" role="alert">

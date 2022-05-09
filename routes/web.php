@@ -43,13 +43,14 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/home', [HomeController::class, 'home'])->name('inicio');
     Route::resource('/home/users', UserController::class);
     
-    Route::resource('/home/docentes', DocenteController::class);;
+    Route::resource('/home/docentes', DocenteController::class);
     
-    Route::resource('/home/periodos', PeriodoController::class);;
-    Route::resource('/home/carreras', CarreraController::class);;
-    Route::resource('/home/facultades', FacultadeController::class);;
-    Route::resource('/home/materias', MateriaController::class);;
-    Route::resource('/home/docente-materias', DocenteMateriaController::class);;
+    Route::resource('/home/periodos', PeriodoController::class);
+    Route::resource('/home/carreras', CarreraController::class);
+    Route::resource('/home/facultades', FacultadeController::class);
+    Route::resource('/home/materias', MateriaController::class);
+    Route::get('/home/materias/create/{id}', [MateriaController::class, 'getCategoria']);
+    Route::resource('/home/docente-materias', DocenteMateriaController::class);
     Route::get('/home/inicio', function(){
         return view('home');
     });

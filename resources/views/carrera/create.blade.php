@@ -22,7 +22,7 @@
                                     <div class="row">
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                {{ Form::label('Facultad') }}
+                                                <label >Facultad</label>
                                                 <select name="facultad_id" id="facultad_id" class="form-select form-control @error('facultad_id') is-invalid @enderror">
                                                     @foreach ( $facultades as $facultad)
                                                     <option value="{{$facultad->id}}" {{ (collect(old('facultad_id'))->contains($facultad->id)) ? 'selected':'' }} >{{ $facultad->nombre}}</option>                   
@@ -38,8 +38,8 @@
                                         </div>
                                         <div class="col-md-5">
                                             <div class="form-group">
-                                                {{ Form::label('nombre') }}
-                                                <input id="nombre" type="text" name="nombre" class="form-control @error('nombre') is-invalid @enderror" value="{{  old('nombre') }}" placeholder="Nombre" autofocus>
+                                                <label >Nombre</label>
+                                                <input id="nombre" type="text" name="nombre" class="form-control @error('nombre') is-invalid @enderror" value="{{  old('nombre') }}" placeholder="Nombre Carrera" autofocus>
                                                 @error('nombre')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -49,8 +49,8 @@
                                         </div>
                                         <div class="col-md-3">
                                             <div class="form-group">
-                                                {{ Form::label('codigo') }}
-                                                <input id="codigo" type="text" name="codigo" class="form-control @error('codigo') is-invalid @enderror" value="{{ old('codigo') }}" placeholder="Codigo" autofocus>
+                                                <label >Código</label>
+                                                <input id="codigo" type="text" name="codigo" class="form-control @error('codigo') is-invalid @enderror" value="{{ old('codigo') }}" placeholder="Código Carrera" autofocus>
                                                 @error('codigo')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -62,8 +62,8 @@
                                     <div class="row">
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                {{ Form::label('Duración en Semestres') }}
-                                                <input id="duracion" type="text" name="duracion" class="form-control @error('duracion') is-invalid @enderror" value="{{ old('duracion') }}" placeholder="Duración" autofocus>
+                                                <label >Niveles</label>
+                                                <input id="duracion" type="text" name="duracion" class="form-control @error('duracion') is-invalid @enderror" value="{{ old('duracion') }}" placeholder="1-11" autofocus>
                                                 @error('duracion')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -76,7 +76,7 @@
                                         </div> --}}
                                         <div class="col-md-5">
                                             <div class="form-group">
-                                                {{ Form::label('estado') }}
+                                                <label >Estado</label>
                                                 <select name="estado" id="estado" class="form-control "  >
                                                     
                                                     <option value="Activo" @if (old('estado') == "Activo") {{ 'selected' }} @endif >Activo</option>      

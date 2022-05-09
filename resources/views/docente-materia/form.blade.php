@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="form-group">
-                    {{ Form::label('Docente') }}
+                    <label> Docente</label>
                     <select name="docente_id" id="docente_id" class="form-select form-control @error('docente_id') is-invalid @enderror">
                         @foreach ( $docentes as $docente)
                             <option value="{{$docente->id}}" 
@@ -29,7 +29,7 @@
             </div>
             <div class="col-md-4">
                 <div class="form-group">
-                    {{ Form::label('Periodo') }}
+                    <label> Periodo Académico</label>
                     <select name="periodo_id" id="periodo_id" class="form-select form-control @error('materia_id') is-invalid @enderror">
                         @foreach ( $periodos as $periodo)
                             <option value="{{$periodo->id}}" 
@@ -55,7 +55,7 @@
             </div>
             <div class="col-md-4">
                 <div class="form-group">
-                    {{ Form::label('Materia') }}
+                    <label> Materia</label>
                     <select name="materia_id" id="materia_id" class="form-select form-control @error('materia_id') is-invalid @enderror">
                         @foreach ( $materias as $materia)
                             <option value="{{$materia->id}}" 

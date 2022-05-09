@@ -15,6 +15,8 @@ use Illuminate\Validation\Rule;
  */
 class MateriaController extends Controller
 {
+    
+    public $valor=0;
     /**
      * Display a listing of the resource.
      *
@@ -26,6 +28,18 @@ class MateriaController extends Controller
 
         return view('materia.index', compact('materias'))
             ->with('i', (request()->input('page', 1) - 1) * $materias->perPage());
+    }
+
+    public function getCategoria(Request $request, $id){
+
+        if($request->ajax()){
+
+            $categorias = Carrera::find($id);
+
+            return response()->json($categorias);
+
+        }
+
     }
 
     /**
@@ -54,8 +68,9 @@ class MateriaController extends Controller
         request()->validate(Materia::$rules);
 
         $materia = Materia::create($request->all());
-
-        return redirect()->route('materias.index')
+        
+        
+        return back()
         ->with('message', 'Registro creado correctamente');
     }
 

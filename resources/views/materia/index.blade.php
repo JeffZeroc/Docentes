@@ -1,6 +1,6 @@
 @extends('layouts.app_admin')
 
-@section('title','Materias')
+@section('title','Asignaturas')
 
 @section('content')
     <div class="container-fluid">
@@ -11,12 +11,12 @@
                         <div style="display: flex; justify-content: space-between; align-items: center;">
 
                             <span id="card_title">
-                                {{ __('Materias') }}
+                                {{ __('Asignaturas') }}
                             </span>
 
                              <div class="float-right">
                                 <a href="{{ route('materias.create') }}" class="btn btn-primary btn-sm float-right" data-placement="left">
-                                  {{ __('Nueva Materia') }}
+                                  {{ __('Nueva Asignatura') }}
                                 </a>
                               </div>
                         </div>
@@ -28,11 +28,11 @@
                                 <thead class="thead">
                                     <tr align="center">
 										<th scope="col" width="280">Carrera</th>
-										<th scope="col" width="250">Materia</th>
-										<th scope="col" width="100">Codigo</th>
+										<th scope="col" width="250">Asignatura</th>
+										<th scope="col" width="100">Código</th>
+										<th scope="col" width="80">Nivel</th>
 										<th scope="col" width="80">Hora Autonomas</th>
-										<th scope="col" width="80">Hora Precenciales</th>
-										<th scope="col" width="80">Hora Docentes</th>
+										<th scope="col" width="80">Hora Presenciales</th>
 
                                         <th scope="col" width="180" ></th>
                                     </tr>
@@ -43,9 +43,9 @@
 											<td>{{ $materia->carrera->nombre }}</td>
 											<td>{{ $materia->nombre }}</td>
 											<td>{{ $materia->codigo }}</td>
+											<td>{{ $materia->nivel }}</td>
 											<td>{{ $materia->hora_a }}</td>
 											<td>{{ $materia->hora_p }}</td>
-											<td>{{ $materia->hora_d }}</td>
                                             <td align="center">
                                                 <form action="{{ route('materias.destroy',$materia->id) }}" method="POST">
                                                     {{-- <a class="btn btn-sm btn-primary " href="{{ route('materias.show',$materia->id) }}"><i class="fa fa-fw fa-eye"></i> </a> --}}

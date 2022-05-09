@@ -24,7 +24,7 @@ class Periodo extends Model
     
     static $rules = [
 		'nombre' => 'required|unique:periodos|max:25',
-    'codigo' => 'required|unique:periodos|max:25',
+    'codigo' => 'required|unique:periodos|max:11|min:11',
 		'inicio_periodo' => 'required',
 		'fin_periodo' => 'required',
     ];

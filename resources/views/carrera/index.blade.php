@@ -30,8 +30,8 @@
                                         
 										<th scope="col">Facultad</th>
 										<th width="200">Carrera</th>
-										<th scope="col">Codigo</th>
-										<th scope="col">Duracion</th>
+										<th scope="col">Código</th>
+										<th scope="col">Niveles</th>
 										<th scope="col" >Estado</th>
                                         <th scope="col" width="180" ></th>
                                     </tr>

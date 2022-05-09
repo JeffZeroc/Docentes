@@ -29,7 +29,7 @@ class Carrera extends Model
         'facultad_id' => 'required',
             'codigo' => 'required|unique:carreras|max:15',
             'nombre' => 'required|unique:carreras|max:100',
-            'duracion' => 'required|numeric|max:11',
+            'duracion' => 'required|numeric|max:15',
             'estado' => 'required',
     ];
 

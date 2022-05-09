@@ -1,6 +1,6 @@
 @extends('layouts.app_admin')
 
-@section('title','Periodos')
+@section('title','Periodos Académicos')
 
 @section('content')
     <div class="container-fluid">
@@ -11,7 +11,7 @@
                         <div style="display: flex; justify-content: space-between; align-items: center;">
 
                             <span id="card_title">
-                                {{ __('Periodos') }}
+                                {{ __('Periodos Académicos') }}
                             </span>
 
                              <div class="float-right">
