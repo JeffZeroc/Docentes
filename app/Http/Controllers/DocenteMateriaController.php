@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Docente;
 use App\Models\DocenteMateria;
+use App\Models\Materia;
 use App\Models\Periodo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -37,7 +38,8 @@ class DocenteMateriaController extends Controller
         $docenteMateria = new DocenteMateria();
         $docentes = DB::table('docentes')->where('estado', 'Activo')->get();
         $periodos = Periodo::get();
-        $materias = DB::select('select materias.id,CONCAT(materias.nombre,", ",carreras.nombre) as nombre from materias,carreras where (materias.carrera_id = carreras.id) AND (carreras.estado like "Activo")');
+        $materias = Materia::get();
+        // $materias = DB::select('select materias.id,CONCAT(materias.nombre,", ",carreras.nombre) as nombre from materias,carreras where (materias.carrera_id = carreras.id) AND (carreras.estado like "Activo")');
         return view('docente-materia.create', compact('docenteMateria','docentes','periodos','materias'));
     }
 
