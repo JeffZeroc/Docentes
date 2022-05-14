@@ -35,7 +35,7 @@ class DocenteMateriaController extends Controller
     public function create()
     {
         $docenteMateria = new DocenteMateria();
-        $docentes = DB::select('select * from docentes where estado like "Activo"');
+        $docentes = DB::table('docentes')->where('estado', 'Activo')->get();
         $periodos = Periodo::get();
         $materias = DB::select('select materias.id,CONCAT(materias.nombre,", ",carreras.nombre) as nombre from materias,carreras where (materias.carrera_id = carreras.id) AND (carreras.estado like "Activo")');
         return view('docente-materia.create', compact('docenteMateria','docentes','periodos','materias'));
