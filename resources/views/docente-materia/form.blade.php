@@ -30,11 +30,11 @@
             <div class="col-md-4">
                 <div class="form-group">
                     <label> Periodo Académico</label>
-                    <select name="periodo_id" id="periodo_id" class="form-select form-control @error('materia_id') is-invalid @enderror">
+                    <select name="periodo_id" id="periodo_id" class="form-select form-control @error('periodo_id') is-invalid @enderror">
                         @foreach ( $periodos as $periodo)
                             <option value="{{$periodo->id}}" 
                                 @if (old('periodo_id') == null)
-                                    @if ($periodo->id == $docenteMateria->periodo_id)
+                                    @if ($periodo->estado == 1)
                                         {{ 'selected' }}
                                     @endif
                                 @else
@@ -56,6 +56,86 @@
             <div class="col-md-4">
                 <div class="form-group">
                     <label> Materia</label>
+                    <select name="materia_id" id="materia_id" class="form-select form-control @error('materia_id') is-invalid @enderror">
+                        @foreach ( $materias as $materia)
+                            <option value="{{$materia->id}}" 
+                                @if (old('materia_id') == null)
+                                    @if ($materia->id == $docenteMateria->materia_id)
+                                        {{ 'selected' }}
+                                    @endif
+                                @else
+                                    @if ($materia->id == old('materia_id'))
+                                        {{ 'selected' }}
+                                    @endif
+                                @endif>
+                                {{ $materia->nombre }}
+                            </option>
+                        @endforeach
+                    </select>
+                    @error('materia_id')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label> Carrera</label>
+                    <select name="materia_id" id="materia_id" class="form-select form-control @error('materia_id') is-invalid @enderror">
+                        @foreach ( $materias as $materia)
+                            <option value="{{$materia->id}}" 
+                                @if (old('materia_id') == null)
+                                    @if ($materia->id == $docenteMateria->materia_id)
+                                        {{ 'selected' }}
+                                    @endif
+                                @else
+                                    @if ($materia->id == old('materia_id'))
+                                        {{ 'selected' }}
+                                    @endif
+                                @endif>
+                                {{ $materia->nombre }}
+                            </option>
+                        @endforeach
+                    </select>
+                    @error('materia_id')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label> Nivel</label>
+                    <select name="materia_id" id="materia_id" class="form-select form-control @error('materia_id') is-invalid @enderror">
+                        @foreach ( $materias as $materia)
+                            <option value="{{$materia->id}}" 
+                                @if (old('materia_id') == null)
+                                    @if ($materia->id == $docenteMateria->materia_id)
+                                        {{ 'selected' }}
+                                    @endif
+                                @else
+                                    @if ($materia->id == old('materia_id'))
+                                        {{ 'selected' }}
+                                    @endif
+                                @endif>
+                                {{ $materia->nombre }}
+                            </option>
+                        @endforeach
+                    </select>
+                    @error('materia_id')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label> Asignatura</label>
                     <select name="materia_id" id="materia_id" class="form-select form-control @error('materia_id') is-invalid @enderror">
                         @foreach ( $materias as $materia)
                             <option value="{{$materia->id}}" 

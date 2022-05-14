@@ -21,6 +21,7 @@ class CreatePeriodoTable extends Migration
             $table->string('codigo')->unique();
             $table->date('inicio_periodo');
             $table->date('fin_periodo');
+            $table->boolean('estado');
             $table->timestamps();
 
             

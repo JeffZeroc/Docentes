@@ -1,6 +1,6 @@
 @extends('layouts.app_admin')
 
-@section('title','Editar Facultades')
+@section('title','Actualizar Facultades')
 
 @section('content')
     <section class="content container-fluid">
@@ -24,7 +24,7 @@
                                     <div class="form-group">
                                         <div class="col-md-6">
                                             <label for="nombre" >Nombre</label>
-                                            <input id="nombre" type="text" name="nombre" class="form-control @error('nombre') is-invalid @enderror" value="{{ $facultade->nombre }}" placeholder="Nombre" autofocus>
+                                            <input id="nombre" type="text" name="nombre" class="form-control @error('nombre') is-invalid @enderror" value="{{ $facultade->nombre }}" placeholder="Nombre Facultad" autofocus>
                                             @error('nombre')
                                                 <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>

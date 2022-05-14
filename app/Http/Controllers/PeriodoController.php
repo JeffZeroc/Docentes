@@ -21,7 +21,6 @@ class PeriodoController extends Controller
     public function index()
     {
         $periodos = Periodo::paginate();
-
         return view('periodo.index', compact('periodos'))
             ->with('i', (request()->input('page', 1) - 1) * $periodos->perPage());
     }
@@ -48,7 +47,16 @@ class PeriodoController extends Controller
 
 
         request()->validate(Periodo::$rules);
+        if ($request->estado == 1) {
+            $periodos_totales = Periodo::get();
+            foreach ($periodos_totales as $p) {
+                $p->estado = 0;    
+                $p->save();
+            }
+        }
         $periodo = Periodo::create($request->all());
+
+        
 
         return redirect()->route('periodos.index')
         ->with('message', 'Registro creado correctamente');
@@ -98,20 +106,32 @@ class PeriodoController extends Controller
             'codigo' => [
                 'required',
                 Rule::unique('periodos')->ignore($periodo->id),
-                'max:25',
+                'max:11',
+                'min:11',
             ],
             'inicio_periodo' => 'required',
             'fin_periodo' => 'required',
+            'estado' => 'required',
         ]); 
 
+        if ($request->estado == 1) {
+            $periodos_totales = Periodo::get();
+            foreach ($periodos_totales as $p) {
+                $p->estado = 0;    
+                $p->save();
+            }
+        }
         $periodos = Periodo::find($periodo->id);
-
         $periodos->nombre = $request->nombre;
         $periodos->codigo = $request->codigo;
         $periodos->inicio_periodo = $request->inicio_periodo;
         $periodos->fin_periodo = $request->fin_periodo;
+        $periodos->estado = $request->estado;
 
         $periodos->save();
+
+        
+        
 
         // request()->validate(Periodo::$rules);
 

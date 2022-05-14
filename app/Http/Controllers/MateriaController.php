@@ -97,7 +97,8 @@ class MateriaController extends Controller
     {
         $materia = Materia::find($id);
         $carreras = Carrera::get();
-        return view('materia.edit', compact('materia','carreras'));
+        $duracion = Carrera::find($materia->carrera_id);
+        return view('materia.edit', compact('materia','carreras','duracion'));
     }
 
     /**
@@ -120,7 +121,7 @@ class MateriaController extends Controller
             ],
             'hora_a' => 'required|numeric',
             'hora_p' => 'required|numeric',
-            'hora_d' => 'required|numeric',
+            'nivel' => 'required|numeric',
         ]);
 
         $materias = Materia::find($materia->id);
@@ -129,7 +130,7 @@ class MateriaController extends Controller
         $materias->codigo = $request->codigo;
         $materias->hora_a = $request->hora_a;
         $materias->hora_p = $request->hora_p;
-        $materias->hora_d = $request->hora_d;
+        $materias->nivel = $request->nivel;
 
         $materias->save();
 

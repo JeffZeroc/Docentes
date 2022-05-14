@@ -1,6 +1,6 @@
 @extends('layouts.app_admin')
 
-@section('title','Carrera')
+@section('title','Carreras')
 
 @section('content')
     <div class="container-fluid">
@@ -39,7 +39,6 @@
                                 <tbody>
                                     @foreach ($carreras as $carrera)
                                         <tr>
-                                            
 											<td>{{ $carrera->facultade->nombre }}</td>
 											<td>{{ $carrera->nombre }}</td>
 											<td>{{ $carrera->codigo }}</td>

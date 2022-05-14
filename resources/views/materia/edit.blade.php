@@ -1,6 +1,6 @@
 @extends('layouts.app_admin')
 
-@section('title','Editar Materias')
+@section('title','Editar Asignatura')
 
 @section('content')
     <section class="content container-fluid">
@@ -11,7 +11,7 @@
 
                 <div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title">Actualizar Materia</span>
+                        <span class="card-title">Actualizar Asignatura</span>
                     </div>
                     <div class="card-body">
                         <form method="POST" action="{{ route('materias.update', $materia->id) }}"  role="form" enctype="multipart/form-data">
@@ -36,7 +36,7 @@
                                                                     {{ 'selected' }}
                                                                 @endif
                                                             @endif>
-                                                            {{ $carrera->duracion}}
+                                                            {{ $carrera->nombre}}
                                                         </option>
                                                     @endforeach
                                                 </select>
@@ -52,7 +52,20 @@
                                             <div class="form-group">
                                                 <label> Nivel</label>
                                                 <select name="nivel" id="nivel" class="form-select form-control @error('nivel') is-invalid @enderror">
-                                                                                                       
+                                                    @for ($i = 1; $i < $duracion->duracion; $i++)
+                                                    <option value="{{$i}}" 
+                                                        @if (old('nivel') == null)
+                                                            @if ($i == $materia->nivel)
+                                                                {{ 'selected' }}
+                                                            @endif
+                                                        @else
+                                                            @if ($i == old('carrera_id'))
+                                                                {{ 'selected' }}
+                                                            @endif
+                                                        @endif>
+                                                        {{ $i}}
+                                                    </option>
+                                                    @endfor
                                                 </select>
                                                 @error('nivel')
                                                     <span class="invalid-feedback" role="alert">
@@ -118,7 +131,58 @@
                                     </div>
                                 </div>
                             </div>
+                            <script type="text/javascript">
+                                const $select = document.querySelector("#carrera_id");
+                                const $select2 = document.querySelector("#nivel");
+                                
+                                const opcionCambiada = () => {
+                                    for (let i = $select2.options.length; i >= 0; i--) {
+                                        $select2.remove(i);
+                                    }
+                                    // var doctors = document.getElementById("carrera_id");
+                                    // console.log(doctors.value);
+                                    $.get("/home/materias/create/"+event.target.value+"",function(response,select){
+                                        $valor = response.duracion;
+                                        
+                                        for(i=1; i<=$valor; i++){
+                                            const option = document.createElement('option');
+                                            option.value = i;
+                                            option.text = i;
+                                            
+                                            $select2.appendChild(option);
+                                            // const option = Option();
+                                            // $select2.appendChild(option);
+                                            //$('#nivel').append("option value='"+i+"'>"+i+"</option>");
+                                            //console.log(option);
+                                            // const option = document.createElement('option');
+                                            // option.value = i;
+                                            // option.text = i;
+                                            // $select2.appendChild(option);
+                                            // "@if (old('nivel') == '{{i}}' ) {{ 'selected' }} @endif"
+                                        }
+                                        
+                                    });
+                                    
+                                };
 
+                                $select.addEventListener("change", opcionCambiada);
+
+                                
+                                // function cambio(select){
+                                //     $dato = select.value;
+                                //     $.get("/home/materias/create/"+event.target.value+"",function(response,dato){
+                                //         $("#nivel").empty();
+                                //         for(i=0; i<response.duracion; i++){
+                                //             $("#nivel").append("option value='"+i+"'>"+i+"</option>");
+                                //         }
+                                //     });
+                                // };
+                                // function cambio(select){
+                                //     $niveles = $carreras->find(select.value);
+                                //     $niveles_c= $niveles->duracion;
+                                   
+                                // } 
+                            </script>
                         </form>
                     </div>
                 </div>

@@ -21,6 +21,7 @@ class DocenteController extends Controller
     public function index()
     {
         $docentes = Docente::paginate();
+        
 
         return view('docente.index', compact('docentes'))
             ->with('i', (request()->input('page', 1) - 1) * $docentes->perPage());
@@ -76,6 +77,17 @@ class DocenteController extends Controller
         }else {
             $request->fecha_suspencion = null;
         }
+
+        if ($request->relacion_dependencia=='Nombramiento') {
+            
+            $this->validate($request, [
+                'relacion_dependencia2' => 'required',
+            ]); 
+        }else {
+            $this->validate($request, [
+                'relacion_dependencia3' => 'required',
+            ]);
+        }
         
         $this->validate($request, [
             'nombres' => 'required|string|max:50',
@@ -94,6 +106,8 @@ class DocenteController extends Controller
             'phd' => '',
             'discapacidad' => 'required|max:2',
             'estado' => 'required|max:15',
+            'relacion_dependencia' => 'required',
+            'dedicacion' => 'required',
         ]); 
 
         $docentes = new Docente;
@@ -112,6 +126,16 @@ class DocenteController extends Controller
         $docentes->porcentaje = $request->porcentaje;
         $docentes->etnia = $request->etnia;
         $docentes->fecha_suspencion = $request->fecha_suspencion;
+        $docentes->relacion_dependencia = $request->relacion_dependencia;
+        $docentes->dedicacion = $request->dedicacion;
+
+        //Relación Dependencia
+        if ($request->relacion_dependencia=='Nombramiento') {
+            $docentes->relacion_dependencia2 = $request->relacion_dependencia2;
+        }else {
+            $docentes->relacion_dependencia2 = $request->relacion_dependencia3;
+        }
+
 
         //titulo 3
         if ($request->titulo_3_n=='') {
@@ -163,12 +187,8 @@ class DocenteController extends Controller
         $docente = Docente::find($id);
 
         $pdf = PDF::loadView('docente.pdf',['docente'=>$docente]);
-        //$pdf->loadHTML('<h1>Test</h1>');
+        
         return $pdf->stream();
-        // return $pdf->download('Document_datos_{{$docente->cedula}}.pdf');
-        // $docente = Docente::find($id);
-
-        // return view('docente.show', compact('docente'));
     }
 
     /**
@@ -210,6 +230,17 @@ class DocenteController extends Controller
         }else {
             $request->fecha_suspencion = null;
         }
+
+        if ($request->relacion_dependencia=='Nombramiento') {
+            
+            $this->validate($request, [
+                'relacion_dependencia2' => 'required',
+            ]); 
+        }else {
+            $this->validate($request, [
+                'relacion_dependencia3' => 'required',
+            ]);
+        }
         
         $this->validate($request, [
             'nombres' => 'required|string|max:50',
@@ -247,6 +278,9 @@ class DocenteController extends Controller
             'phd' => '',
             'discapacidad' => 'required|max:2',
             'estado' => 'required|max:15',
+            'relacion_dependencia' => 'required',
+            
+            'dedicacion' => 'required',
         ]); 
 
         $docentes = Docente::find($docente->id);
@@ -264,6 +298,16 @@ class DocenteController extends Controller
         $docentes->discapacidad = $request->discapacidad;
         $docentes->porcentaje = $request->porcentaje;
         $docentes->etnia = $request->etnia;
+        $docentes->relacion_dependencia = $request->relacion_dependencia;
+        
+        $docentes->dedicacion = $request->dedicacion;
+
+        //Relación Dependencia
+        if ($request->relacion_dependencia=='Nombramiento') {
+            $docentes->relacion_dependencia2 = $request->relacion_dependencia2;
+        }else {
+            $docentes->relacion_dependencia2 = $request->relacion_dependencia3;
+        }
 
         //titulo 3
         if ($request->titulo_3_n=='') {
@@ -297,6 +341,7 @@ class DocenteController extends Controller
 
         return redirect()->route('docentes.index')
             ->with('message', 'Registro actualizado correctamente.');
+        //return $request;
     }
 
     /**

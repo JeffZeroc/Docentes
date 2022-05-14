@@ -31,6 +31,9 @@ class CreateDocenteTable extends Migration
             $table->string('doctorado',100);
             $table->string('phd',100);
             $table->String('discapacidad');
+            $table->String('relacion_dependencia');
+            $table->String('relacion_dependencia2');
+            $table->String('dedicacion');
             $table->String('porcentaje',3)->nullable();
             $table->string('estado',15);
             $table->date('fecha_suspencion')->nullable();

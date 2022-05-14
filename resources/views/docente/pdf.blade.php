@@ -13,30 +13,32 @@
         </div>
 
         <div class="card-body">
-            <div class="form-group cemter">
-                <strong>Información Docente de la Universidad Técnica Luis Vargas Torres Sede Santo Domingo</strong>
-                
-                
-
-            </div>
-            <div class="form-group cemter">
-                <strong>Fecha: </strong>
-                {{$mytime = Carbon\Carbon::now()}}
+            <div class="row">
+                <div class="form-group " style="text-align:center">
+                    <strong >Universidad Técnica Luis Vargas Torres </strong>
+                </div>
+                <div class="form-group " style="text-align:center">
+                    <strong >Sede Santo Domingo </strong>
+                </div>
+                <br>
+                <div class="form-group " style="text-align:center">
+                    <strong >Datos Docente</strong>
+                </div>
             </div>
             <br>
-            <div class="form-group">
+            <div class="col-md-6">
                 <strong>Nombre Completo:  </strong>
                 {{ $docente->nombres }} {{ $docente->apellidos }}
             </div>
             <br>
+            <div class="col-md-2">
+                <strong>Cedula:   </strong>
+                {{ $docente->cedula }}
+            </div>
+            <br>    
             <div class="form-group">
                 <strong>Fecha Nacimiento:  </strong>
                 {{ $docente->fecha_nacimiento }} 
-            </div>
-            <br>
-            <div class="form-group">
-                <strong>Cedula:   </strong>
-                {{ $docente->cedula }}
             </div>
             <br>
             <div class="form-group">
@@ -50,6 +52,16 @@
             </div>
             <br>
             <div class="form-group">
+                <strong>Dedicación:  </strong>
+                {{ $docente->dedicacion }} 
+            </div>
+            <br>
+            <div class="form-group">
+                <strong>Relación Dependencia:  </strong>
+                {{ $docente->relacion_dependencia }} : {{ $docente->relacion_dependencia2 }}
+            </div>
+            <br>
+            <div class="form-group">
                 <strong>Correo Institucional:</strong>
                 {{ $docente->correo_institucional }}
             </div>
@@ -60,7 +72,7 @@
             </div>
             <br>
             <div class="form-group">
-                <strong>Sexo:</strong>
+                <strong>Género:</strong>
                 {{ $docente->sexo }}
             </div>
             <br>
@@ -69,6 +81,7 @@
                 {{ $docente->etnia }}
             </div>
             <br>
+            
             <div class="form-group">
                 <strong>Titulo 3 Nivel:</strong>
                 {{ $docente->titulo_3_n }}

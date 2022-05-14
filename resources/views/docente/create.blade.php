@@ -1,6 +1,7 @@
+
 @extends('layouts.app_admin')
 
-@section('title','Crear Docentes')
+@section('title','Nuevo Docente')
 
 @section('content')
     <section class="content container-fluid">
@@ -11,7 +12,7 @@
 
                 <div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title">Crear Docente</span>
+                        <span class="card-title">Nuevo Docente</span>
                     </div>
                     <div class="card-body">
                         <form method="POST" action="{{ route('docentes.store') }}"  role="form" enctype="multipart/form-data">
@@ -47,7 +48,7 @@
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label>Cedula </label>
-                                                <input id="cedula" type="text" name="cedula" class="form-control @error('cedula') is-invalid @enderror" value="{{  old('cedula') }}" placeholder="Cedula" autofocus>
+                                                <input id="cedula" type="text" name="cedula" class="form-control @error('cedula') is-invalid @enderror" value="{{  old('cedula') }}" placeholder="Cedula de Identidad" autofocus>
                                                 @error('cedula')
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
@@ -56,6 +57,21 @@
                                                 
                                             </div>
                                         </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label> Celular</label>
+                                                <input id="celular" type="text" name="celular" class="form-control @error('celular') is-invalid @enderror" value="{{  old('celular') }}" placeholder="Número Telefonico" autofocus>
+                                                @error('celular')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror 
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="row">
                                         <div class="col-md-3" >
                                             <div class="form-group" >
                                                 <label> Fecha Nacimiento</label>
@@ -67,33 +83,20 @@
                                                 @enderror
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label> Celular</label>
-                                                <input id="celular" type="text" name="celular" class="form-control @error('celular') is-invalid @enderror" value="{{  old('celular') }}" placeholder="Celular" autofocus>
-                                                @error('celular')
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
-                                                @enderror 
-                                                
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
+                                        
+                                        <div class="col-md-3">
                                             <div class="form-group">
                                                 <label> Género </label>
                                                 <select name="sexo" id="sexo" class="form-select form-control "  >
                                                                                 
-                                                    <option value="Masculino" @if (old('sexo') == "Masculino") {{ 'selected' }} @endif >Masculino</option>      
-                                                    <option value="Femenino" @if (old('sexo') == "Femenino") {{ 'selected' }} @endif >Femenino</option>                   
+                                                    <option value="Hombre" @if (old('sexo') == "Hombre") {{ 'selected' }} @endif >Hombre</option>      
+                                                    <option value="Mujer" @if (old('sexo') == "Mujer") {{ 'selected' }} @endif >Mujer</option>                   
                                                     
                                                 </select>
                                                 
                                             </div>
                                         </div>
-                                        <div class="col-md-4">
+                                        <div class="col-md-3">
                                             <div class="form-group">
                                                 <label> Etnia</label>
                                                 <select name="etnia" id="etnia" class="form-select orm-control "  >                          
@@ -104,6 +107,19 @@
                                                     <option value="Blanco" @if (old('etnia') == "Blanco") {{ 'selected' }} @endif >Blanco</option>
                                                     <option value="Otro" @if (old('etnia') == "Otro") {{ 'selected' }} @endif >Otro</option>
                                                 </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label> Dedicación </label>
+                                                <select name="dedicacion" id="dedicacion" class="form-select form-control "  >
+                                                                                
+                                                    <option value="TC" @if (old('dedicacion') == "TC") {{ 'selected' }} @endif >Tiempo Completo</option>      
+                                                    <option value="MT" @if (old('dedicacion') == "MT") {{ 'selected' }} @endif >Medio Tiempo</option>         
+                                                    <option value="TP" @if (old('dedicacion') == "TP") {{ 'selected' }} @endif >Tiempo Parcial</option>                
+                                                    
+                                                </select>
+                                                
                                             </div>
                                         </div>
                                     </div>
@@ -133,7 +149,7 @@
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-md-12">
+                                        <div class="col-md-6">
                                             <div class="form-group">
                                                 <label> Dirección Domicilio</label>
                                                 <input id="direccion" type="text" name="direccion" class="form-control @error('direccion') is-invalid @enderror" value="{{  old('direccion') }}" placeholder="Dirección de Domicilio" autofocus>
@@ -144,6 +160,92 @@
                                                 @enderror 
                                             </div>
                                         </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label> Relación Dependencia</label>
+                                                <select name="relacion_dependencia" id="relacion_dependencia" class="form-select form-control" >       
+                                                    <option value="Nombramiento" @if (old('relacion_dependencia') == "Nombramiento") {{ 'selected' }} @endif >Nombramiento</option>      
+                                                    <option value="Contrato" @if (old('relacion_dependencia') == "Contrato") {{ 'selected' }} @endif >Contrato</option>                   
+                                                </select>
+                                            </div>
+                                        </div>
+                                        
+                                        @if (old('relacion_dependencia') != null)
+                                            @if (old('relacion_dependencia') == 'Nombramiento' )
+                                                <div class="col-md-3" id="rd_div2" style="display: block;">
+                                                    <div class="form-group" >
+                                                        <label> Detalle</label>
+                                                        <select name="relacion_dependencia2" id="relacion_dependencia2" class="form-select form-control ">                      
+                                                            <option value="Titular" @if (old('relacion_dependencia2') == "Titular") {{ 'selected' }} @endif >Titular</option>      
+                                                            <option value="Auxiliar 1" @if (old('relacion_dependencia2') == "Auxiliar 1") {{ 'selected' }} @endif >Auxiliar 1</option>                   
+                                                            <option value="Auxiliar 2" @if (old('relacion_dependencia2') == "Auxiliar 2") {{ 'selected' }} @endif >Auxiliar 2</option>                   
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3" id="rd_div" style="display: none;">
+                                                    <div class="form-group" >
+                                                        <label >Detalle</label>
+                                                        <select name="relacion_dependencia3" id="relacion_dependencia3" class="form-select form-control "  >                      
+                                                            <option value="Ocacional" @if (old('relacion_dependencia3') == "Ocacional") {{ 'selected' }} @endif >Ocacional</option>      
+                                                            <option value="Individual" @if (old('relacion_dependencia3') == "Individual") {{ 'selected' }} @endif >Individual</option>                   
+                                                            <option value="Honorario" @if (old('relacion_dependencia3') == "Honorario") {{ 'selected' }} @endif >Honorario</option>                   
+                                                        </select>
+                                                    </div>
+                                                </div> 
+                                                                                            
+                                            @else
+
+                                                <div class="col-md-3" id="rd_div2" style="display: none;">
+                                                    <div class="form-group" >
+                                                        <label> Detalle</label>
+                                                        <select name="relacion_dependencia2" id="relacion_dependencia2" class="form-select form-control ">                      
+                                                            <option value="Titular" @if (old('relacion_dependencia2') == "Titular") {{ 'selected' }} @endif >Titular</option>      
+                                                            <option value="Auxiliar 1" @if (old('relacion_dependencia2') == "Auxiliar 1") {{ 'selected' }} @endif >Auxiliar 1</option>                   
+                                                            <option value="Auxiliar 2" @if (old('relacion_dependencia2') == "Auxiliar 2") {{ 'selected' }} @endif >Auxiliar 2</option>                   
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3" id="rd_div" style="display: block;">
+                                                    <div class="form-group" >
+                                                        <label >Detalle</label>
+                                                        <select name="relacion_dependencia3" id="relacion_dependencia3" class="form-select form-control "  >                      
+                                                            <option value="Ocacional" @if (old('relacion_dependencia3') == "Ocacional") {{ 'selected' }} @endif >Ocacional</option>      
+                                                            <option value="Individual" @if (old('relacion_dependencia3') == "Individual") {{ 'selected' }} @endif >Individual</option>                   
+                                                            <option value="Honorario" @if (old('relacion_dependencia3') == "Honorario") {{ 'selected' }} @endif >Honorario</option>                   
+                                                        </select>
+                                                    </div>
+                                                </div> 
+                                            @endif
+                                            
+
+                                            
+                                        @else
+                                            <div class="col-md-3" id="rd_div2" style="display: block;">
+                                                <div class="form-group" >
+                                                    <label> Detalle</label>
+                                                    <select name="relacion_dependencia2" id="relacion_dependencia2" class="form-select form-control ">                      
+                                                        <option value="Titular" @if (old('relacion_dependencia2') == "Titular") {{ 'selected' }} @endif >Titular</option>      
+                                                        <option value="Auxiliar 1" @if (old('relacion_dependencia2') == "Auxiliar 1") {{ 'selected' }} @endif >Auxiliar 1</option>                   
+                                                        <option value="Auxiliar 2" @if (old('relacion_dependencia2') == "Auxiliar 2") {{ 'selected' }} @endif >Auxiliar 2</option>                   
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-3" id="rd_div" style="display: none;">
+                                                <div class="form-group" >
+                                                    <label >Detalle</label>
+                                                    <select name="relacion_dependencia3" id="relacion_dependencia3" class="form-select form-control "  >                      
+                                                        <option value="Ocacional" @if (old('relacion_dependencia3') == "Ocacional") {{ 'selected' }} @endif >Ocacional</option>      
+                                                        <option value="Individual" @if (old('relacion_dependencia3') == "Individual") {{ 'selected' }} @endif >Individual</option>                   
+                                                        <option value="Honorario" @if (old('relacion_dependencia3') == "Honorario") {{ 'selected' }} @endif >Honorario</option>                   
+                                                    </select>
+                                                </div>
+                                            </div> 
+                                        @endif
+                                            
+                                        
+                                            
+                                        
                                     </div>
                                     <div class="row">
                                         <div class="col-md-12">
@@ -297,6 +399,8 @@
                                 </div>
                             </div>
                             <script type="text/javascript">
+                                $rd = document.querySelector("#relacion_dependencia")
+
                                 function showDiv(select){
                                    if(select.value=="Si"){
                                     document.getElementById('text_porcentaje').style.display = "block";
@@ -313,6 +417,25 @@
                                     document.getElementById('date_suspendido').style.display = "none";
                                    }
                                 } 
+                                
+                                
+                                // const opcionCambiada = () => {
+                                function Opcioncambiada(){
+                                    // console.log($rd.value);
+                                    if($rd.value=="Contrato"){
+                                        document.getElementById('rd_div').style.display = "block";
+                                        document.getElementById('rd_div2').style.display = "none";
+                                    } else{
+                                        document.getElementById('rd_div').style.display = "none";
+                                        document.getElementById('rd_div2').style.display = "block";
+                                    
+                                    }
+                                    
+                                        
+                                };
+
+                                $rd.addEventListener("change", Opcioncambiada);
+                                
                             </script>
 
                         </form>

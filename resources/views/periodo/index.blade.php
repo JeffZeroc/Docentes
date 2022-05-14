@@ -29,9 +29,10 @@
                                 <thead class="thead">
                                     <tr align="center">
 										<th scope="col" width="250">Nombre</th>
-                                        <th scope="col" >Codigo</th>
-										<th scope="col">Inicio Periodo</th>
-                                        <th scope="col">Fin Periodo</th>
+                                        <th scope="col" >Código</th>
+										<th scope="col">Inicio Periodo Académico</th>
+                                        <th scope="col">Fin Periodo Académico</th>
+                                        <th scope="col">Estado</th>
                                         <th scope="col" width="180" ></th>
                                     </tr>
                                 </thead>
@@ -43,6 +44,13 @@
                                             <td>{{ $periodo->codigo }}</td>
 											<td >{{ $periodo->inicio_periodo }}</td>
 											<td>{{ $periodo->fin_periodo }}</td>
+                                            @if ($periodo->estado == 1)
+                                            <td style="background-color:#00ff4c">Vigente</td>
+                                            @else
+                                            <td style="background-color:#FF0000">Caducado</td>
+                                            @endif    
+                                           
+                                            
 
                                             <td align="center">
                                                 <form action="{{ route('periodos.destroy',$periodo->id) }}" method="POST">

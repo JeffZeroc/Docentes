@@ -1,6 +1,6 @@
 @extends('layouts.app_admin')
 
-@section('title','Editar Carrera')
+@section('title','Actualizar Carrera')
 
 @section('content')
     <section class="content container-fluid">

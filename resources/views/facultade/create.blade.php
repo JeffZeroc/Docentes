@@ -1,6 +1,6 @@
 @extends('layouts.app_admin')
 
-@section('title','Crear Facultades')
+@section('title','Nueva Facultades')
 
 @section('content')
     <section class="content container-fluid">
@@ -11,7 +11,7 @@
 
                 <div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title">Crear Facultad</span>
+                        <span class="card-title">Nueva Facultad</span>
                     </div>
                     <div class="card-body">
                         <form method="POST" action="{{ route('facultades.store') }}"  role="form" enctype="multipart/form-data">
@@ -23,7 +23,7 @@
                                     <div class="form-group">
                                         <div class="col-md-6">
                                             <label for="nombre" >Nombre</label>
-                                            <input id="nombre" type="text" name="nombre" class="form-control @error('nombre') is-invalid @enderror" value="{{ old('nombre') }}" placeholder="Nombre" autofocus>
+                                            <input id="nombre" type="text" name="nombre" class="form-control @error('nombre') is-invalid @enderror" value="{{ old('nombre') }}" placeholder="Nombre Facultad" autofocus>
                                             @error('nombre')
                                                 <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>

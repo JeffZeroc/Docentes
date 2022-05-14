@@ -41,7 +41,7 @@ class Docente extends Model
      *
      * @var array
      */
-    protected $fillable = ['nombres','apellidos','cedula','celular','fecha_nacimiento','direccion','correo_institucional','correo_personal','sexo','etnia','titulo_3_n','titulo_4_n','doctorado','phd','discapacidad','porcentaje','estado','fecha_suspencion'];
+    protected $fillable = ['nombres','apellidos','cedula','celular','fecha_nacimiento','direccion','correo_institucional','correo_personal','sexo','etnia','titulo_3_n','titulo_4_n','doctorado','phd','discapacidad','porcentaje','estado','fecha_suspencion','relacion_dependencia','relacion_dependencia2','dedicacion'];
 
 
     /**

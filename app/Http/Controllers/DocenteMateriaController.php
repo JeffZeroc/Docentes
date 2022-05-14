@@ -53,7 +53,7 @@ class DocenteMateriaController extends Controller
 
         $docenteMateria = DocenteMateria::create($request->all());
 
-        return redirect()->route('docente-materias.index')
+        return back()
         ->with('message', 'Registro creado correctamente');
     }
 

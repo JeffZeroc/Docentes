@@ -46,7 +46,7 @@
                                         </div>
                                         <div class="col-md-3">
                                             <div class="form-group">
-                                                <label> Celula</label>
+                                                <label> Cedula</label>
                                                 <input id="cedula" type="text" name="cedula" class="form-control @error('cedula') is-invalid @enderror" value="{{  $docente->cedula }}" placeholder="Cedula" autofocus>
                                                 @error('cedula')
                                                     <span class="invalid-feedback" role="alert">
@@ -56,20 +56,7 @@
                                                 
                                             </div>
                                         </div>
-                                        <div class="col-md-3" >
-                                            <div class="form-group" >
-                                                <label> Fecha Nacimiento</label>
-                                                <input id="fecha_nacimiento" type="date" name="fecha_nacimiento" class="form-control @error('fecha_nacimiento') is-invalid @enderror" value="{{ $docente->fecha_nacimiento}}"  autofocus>
-                                                @error('fecha_nacimiento')
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
-                                                @enderror
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-4">
+                                        <div class="col-md-3">
                                             <div class="form-group">
                                                 <label> Celular</label>
                                                 <input id="celular" type="text" name="celular" class="form-control @error('celular') is-invalid @enderror" value="{{  $docente->celular }}" placeholder="Celular" autofocus>
@@ -81,27 +68,55 @@
                                                 
                                             </div>
                                         </div>
-                                        <div class="col-md-4">
+                                        
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-3" >
+                                            <div class="form-group" >
+                                                <label> Fecha Nacimiento</label>
+                                                <input id="fecha_nacimiento" type="date" name="fecha_nacimiento" class="form-control @error('fecha_nacimiento') is-invalid @enderror" value="{{ $docente->fecha_nacimiento}}"  autofocus>
+                                                @error('fecha_nacimiento')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="col-md-3">
                                             <div class="form-group">
                                                 <label> Género</label>
                                                 <select name="sexo" id="sexo" class="form-select form-control "  >
                                                                                 
-                                                    <option value="Masculino" @if (old('sexo') == "Masculino") {{ 'selected' }} @endif >Masculino</option>      
-                                                    <option value="Femenino" @if (old('sexo') == "Femenino") {{ 'selected' }} @endif >Femenino</option>                   
+                                                    <option value="Masculino" @if ($docente->sexo == "Masculino") {{ 'selected' }} @endif >Masculino</option>      
+                                                    <option value="Femenino" @if ($docente->sexo == "Femenino") {{ 'selected' }} @endif >Femenino</option>                   
                                                     
                                                 </select>
                                                 
                                             </div>
                                         </div>
-                                        <div class="col-md-4">
+                                        <div class="col-md-3">
                                             <div class="form-group">
                                                 <label> Etnia</label>
                                                 <select name="etnia" id="etnia" class="form-select form-control "  >                          
-                                                    <option value="Blanco" @if (old('etnia') == "Blanco") {{ 'selected' }} @endif >Blanco</option>      
-                                                    <option value="Mestizo" @if (old('etnia') == "Mestizo") {{ 'selected' }} @endif >Mestizo</option>
-                                                    <option value="Afrodecendiente" @if (old('etnia') == "Afrodecendiente") {{ 'selected' }} @endif >Afrodecendiente</option>
-                                                    <option value="Montubio" @if (old('etnia') == "Montubio") {{ 'selected' }} @endif >Montubio</option>
+                                                    <option value="Blanco" @if ($docente->etnia == "Blanco") {{ 'selected' }} @endif >Blanco</option>      
+                                                    <option value="Mestizo" @if ($docente->etnia == "Mestizo") {{ 'selected' }} @endif >Mestizo</option>
+                                                    <option value="Afrodecendiente" @if ($docente->etnia == "Afrodecendiente") {{ 'selected' }} @endif >Afrodecendiente</option>
+                                                    <option value="Montubio" @if ($docente->etnia == "Montubio") {{ 'selected' }} @endif >Montubio</option>
                                                 </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label> Dedicación </label>
+                                                <select name="dedicacion" id="dedicacion" class="form-select form-control "  >
+                                                                                
+                                                    <option value="TC" @if ($docente->dedicacion == "TC") {{ 'selected' }} @endif >Tiempo Completo</option>      
+                                                    <option value="MT" @if ($docente->dedicacion == "MT") {{ 'selected' }} @endif >Medio Tiempo</option>         
+                                                    <option value="TP" @if ($docente->dedicacion == "TP") {{ 'selected' }} @endif >Tiempo Parcial</option>                
+                                                    
+                                                </select>
+                                                
                                             </div>
                                         </div>
                                     </div>
@@ -131,7 +146,7 @@
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-md-12">
+                                        <div class="col-md-6">
                                             <div class="form-group">
                                                 <label> Dirección Domicilio</label>
                                                 <input id="direccion" type="text" name="direccion" class="form-control @error('direccion') is-invalid @enderror" value="{{  $docente->direccion }}" placeholder="Dirección de Domicilio" autofocus>
@@ -142,6 +157,63 @@
                                                 @enderror 
                                             </div>
                                         </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label> Relación Dependencia</label>
+                                                <select name="relacion_dependencia" id="relacion_dependencia" class="form-select form-control" >       
+                                                    <option value="Nombramiento" @if ($docente->relacion_dependencia =="Nombramiento") {{ 'selected' }} @endif >Nombramiento</option>      
+                                                    <option value="Contrato" @if ( $docente->relacion_dependencia =="Contrato") {{ 'selected' }} @endif >Contrato</option>                   
+                                                </select>
+                                            </div>
+                                        </div>
+                                        
+                                        @if ($docente->relacion_dependencia =="Nombramiento" )
+                                           
+                                                <div class="col-md-3" id="rd_div2" style="display: block;">
+                                                    <div class="form-group" >
+                                                        <label> Detalle</label>
+                                                        <select name="relacion_dependencia2" id="relacion_dependencia2" class="form-select form-control ">                      
+                                                            <option value="Titular" @if (old('relacion_dependencia2') == "Titular" ||$docente->relacion_dependencia2== "Titular") {{ 'selected' }} @endif >Titular</option>      
+                                                            <option value="Auxiliar 1" @if (old('relacion_dependencia2') == "Auxiliar 1" ||$docente->relacion_dependencia2== "Auxiliar 1") {{ 'selected' }} @endif >Auxiliar 1</option>                   
+                                                            <option value="Auxiliar 2" @if (old('relacion_dependencia2') == "Auxiliar 2" ||$docente->relacion_dependencia2=="Auxiliar 2") {{ 'selected' }} @endif >Auxiliar 2</option>                   
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3" id="rd_div" style="display: none;">
+                                                    <div class="form-group" >
+                                                        <label >Detalle</label>
+                                                        <select name="relacion_dependencia3" id="relacion_dependencia3" class="form-select form-control "  >                      
+                                                            <option value="Ocacional" @if (old('relacion_dependencia3') == "Ocacional" ||$docente->relacion_dependencia2=="Ocacional") {{ 'selected' }} @endif >Ocacional</option>      
+                                                            <option value="Individual" @if (old('relacion_dependencia3') == "Individual" ||$docente->relacion_dependencia2== "Individual") {{ 'selected' }} @endif >Individual</option>                   
+                                                            <option value="Honorario" @if (old('relacion_dependencia3') == "Honorario" ||$docente->relacion_dependencia2=="Honorario") {{ 'selected' }} @endif >Honorario</option>                   
+                                                        </select>
+                                                    </div>
+                                                </div> 
+                                                                                            
+                                            
+                                        @else
+                                            <div class="col-md-3" id="rd_div2" style="display: none;">
+                                                <div class="form-group" >
+                                                    <label> Detalle</label>
+                                                    <select name="relacion_dependencia2" id="relacion_dependencia2" class="form-select form-control ">                      
+                                                        <option value="Titular" @if ($docente->relacion_dependencia2== "Titular") {{ 'selected' }} @endif >Titular</option>      
+                                                        <option value="Auxiliar 1" @if ($docente->relacion_dependencia2== "Auxiliar 1") {{ 'selected' }} @endif >Auxiliar 1</option>                   
+                                                        <option value="Auxiliar 2" @if ($docente->relacion_dependencia2== "Auxiliar 2") {{ 'selected' }} @endif >Auxiliar 2</option>                   
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-3" id="rd_div" style="display: block;">
+                                                <div class="form-group" >
+                                                    <label >Detalle</label>
+                                                    <select name="relacion_dependencia3" id="relacion_dependencia3" class="form-select form-control "  >                      
+                                                        <option value="Ocacional" @if ($docente->relacion_dependencia2=="Ocacional") {{ 'selected' }} @endif >Ocacional</option>      
+                                                        <option value="Individual" @if ($docente->relacion_dependencia2=="Individual") {{ 'selected' }} @endif >Individual</option>                   
+                                                        <option value="Honorario" @if ($docente->relacion_dependencia2== "Honorario") {{ 'selected' }} @endif >Honorario</option>                   
+                                                    </select>
+                                                </div>
+                                            </div> 
+                                        @endif
                                     </div>
                                     <div class="row">
                                         <div class="col-md-12">
@@ -313,6 +385,7 @@
                                 </div>
                             </div>
                             <script type="text/javascript">
+                            $rd = document.querySelector("#relacion_dependencia")
                                 function showDiv(select){
                                    if(select.value=="Si"){
                                     document.getElementById('text_porcentaje').style.display = "block";
@@ -329,6 +402,21 @@
                                     document.getElementById('date_suspendido').style.display = "none";
                                    }
                                 } 
+                                function Opcioncambiada(){
+                                    // console.log($rd.value);
+                                    if($rd.value=="Contrato"){
+                                        document.getElementById('rd_div').style.display = "block";
+                                        document.getElementById('rd_div2').style.display = "none";
+                                    } else{
+                                        document.getElementById('rd_div').style.display = "none";
+                                        document.getElementById('rd_div2').style.display = "block";
+                                    
+                                    }
+                                    
+                                        
+                                };
+
+                                $rd.addEventListener("change", Opcioncambiada);
                             </script>
 
                         </form>

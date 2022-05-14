@@ -27,6 +27,7 @@ class Periodo extends Model
     'codigo' => 'required|unique:periodos|max:11|min:11',
 		'inicio_periodo' => 'required',
 		'fin_periodo' => 'required',
+    'estado' => 'required',
     ];
 
     protected $perPage = 20;
@@ -36,7 +37,7 @@ class Periodo extends Model
      *
      * @var array
      */
-    protected $fillable = ['nombre','codigo','inicio_periodo','fin_periodo'];
+    protected $fillable = ['nombre','codigo','inicio_periodo','fin_periodo','estado'];
 
 
     /**
