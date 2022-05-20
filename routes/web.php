@@ -52,6 +52,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('/home/materias', MateriaController::class);
    
     Route::resource('/home/docente-materias', DocenteMateriaController::class);
+    Route::get('/home/docente-materias/create/{id}/nivel', [DocenteMateriaController::class, 'nivel']);
+    Route::get('/home/docente-materias/create/{id}/{n}', [DocenteMateriaController::class, 'materias']);
     Route::get('/home/inicio', function(){
         return view('home');
     });

@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Carrera;
 use App\Models\Docente;
 use App\Models\DocenteMateria;
 use App\Models\Materia;
 use App\Models\Periodo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use SebastianBergmann\Environment\Console;
 
 /**
  * Class DocenteMateriaController
@@ -39,9 +41,28 @@ class DocenteMateriaController extends Controller
         $docentes = DB::table('docentes')->where('estado', 'Activo')->get();
         $periodos = Periodo::get();
         $materias = Materia::get();
+        $carreras = Carrera::get();
         // $materias = DB::select('select materias.id,CONCAT(materias.nombre,", ",carreras.nombre) as nombre from materias,carreras where (materias.carrera_id = carreras.id) AND (carreras.estado like "Activo")');
-        return view('docente-materia.create', compact('docenteMateria','docentes','periodos','materias'));
+        return view('docente-materia.create', compact('docenteMateria','docentes','periodos','materias','carreras'));
     }
+    
+
+    public function materias($id,$n){
+        return Materia::where('carrera_id', $id)
+        ->where('nivel', $n)
+        ->get();
+
+    }
+    public function nivel($id){
+        return Carrera::where('id', $id)->get();
+    }
+
+    public function fetchCity(Request $request){
+        $data['cities'] = Materia::where("carrera_id",$request->state_id)->get(["name", "id"]);
+        return response()->json($data);
+    }
+    
+        
 
     /**
      * Store a newly created resource in storage.
