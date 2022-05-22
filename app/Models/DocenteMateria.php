@@ -36,7 +36,7 @@ class DocenteMateria extends Model
      *
      * @var array
      */
-    protected $fillable = ['docente_id','periodo_id','materia_id'];
+    protected $fillable = ['docente_id','periodo_id','materia_id','codigo'];
 
 
     /**

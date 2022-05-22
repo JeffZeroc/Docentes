@@ -26,6 +26,7 @@ class CreateDocenteMateriasTable extends Migration
             $table->foreignId('materia_id')
             ->constrained('materias')
             ->onUpdate('cascade');
+            $table->integer('codigo');
             $table->timestamps();
         });
     }

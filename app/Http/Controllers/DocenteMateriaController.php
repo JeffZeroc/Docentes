@@ -9,7 +9,6 @@ use App\Models\Materia;
 use App\Models\Periodo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use SebastianBergmann\Environment\Console;
 
 /**
  * Class DocenteMateriaController
@@ -24,10 +23,10 @@ class DocenteMateriaController extends Controller
      */
     public function index()
     {
-        $docenteMaterias = DocenteMateria::paginate();
+        $docenteMaterias = DocenteMateria::paginate(25);
 
         return view('docente-materia.index', compact('docenteMaterias'))
-            ->with('i', (request()->input('page', 1) - 1) * $docenteMaterias->perPage());
+            ->with('Anterior', (request()->input('page', 1) - 1) * $docenteMaterias->perPage());
     }
 
     /**
@@ -42,7 +41,7 @@ class DocenteMateriaController extends Controller
         $periodos = Periodo::get();
         $materias = Materia::get();
         $carreras = Carrera::get();
-        // $materias = DB::select('select materias.id,CONCAT(materias.nombre,", ",carreras.nombre) as nombre from materias,carreras where (materias.carrera_id = carreras.id) AND (carreras.estado like "Activo")');
+        
         return view('docente-materia.create', compact('docenteMateria','docentes','periodos','materias','carreras'));
     }
     
@@ -57,10 +56,7 @@ class DocenteMateriaController extends Controller
         return Carrera::where('id', $id)->get();
     }
 
-    public function fetchCity(Request $request){
-        $data['cities'] = Materia::where("carrera_id",$request->state_id)->get(["name", "id"]);
-        return response()->json($data);
-    }
+    
     
         
 
@@ -72,12 +68,30 @@ class DocenteMateriaController extends Controller
      */
     public function store(Request $request)
     {
-        request()->validate(DocenteMateria::$rules);
+        try {
+            request()->validate(DocenteMateria::$rules); 
+            try {
+                $this->validate($request, [
+                    'codigo' => 'unique:docente_materias',
+                ]); 
+                try {
+                    $docenteMateria = new DocenteMateria;
+                    $docenteMateria->docente_id = $request->docente_id;
+                    $docenteMateria->periodo_id = $request->periodo_id;
+                    $docenteMateria->materia_id = $request->materia_id;
+                    $docenteMateria->codigo = $request->codigo;
+                    $docenteMateria->save();
+                    return response()->json(['success'=>'4']);
 
-        $docenteMateria = DocenteMateria::create($request->all());
-
-        return back()
-        ->with('message', 'Registro creado correctamente');
+                } catch (\Throwable $th) {
+                    return response()->json(['success'=>'3']);
+                }
+            } catch (\Throwable $th) {
+                return response()->json(['success'=>'2']);
+            }
+        } catch (\Throwable $th) {
+            return response()->json(['success'=>'1']);
+        }
     }
 
     /**

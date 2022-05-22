@@ -64,7 +64,10 @@
                     <select name="carrera_id" id="carrera_id" class="form-select form-control @error('carrera_id') is-invalid @enderror">
                         <option value="">Seleccione Carrera</option>
                         @foreach ( $carreras as $carrera)
-                            <option value="{{$carrera->id}}">
+                            <option value="{{$carrera->id}}" 
+                                @if ($carrera->id == old("carrera_id"))
+                                    {{ 'selected' }}
+                                @endif>
                                 {{ $carrera->nombre }}
                             </option>
                         @endforeach
@@ -108,21 +111,66 @@
     <div class="row box-footer mt20 ">
         <div class="col-md-12">
             <a href="/home/docente-materias" class="btn btn-secondary">Volver</a>
-            <button type="submit" class="btn btn-primary">Guardar</button>
+            <button class="btn btn-primary" id="guardar">Guardar</button>
         </div>
         
     </div>
 </div>
-<script></script>
+<form method="POST" action="" id="Fom1"></form>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
-    const csrfToken = document.head.querySelector("[name~=csrf-token][content]").content;
+    
     $rd = document.querySelector("#carrera_id")
     $_nivel = document.querySelector("#nivel")
     
-    // const opcionCambiada = () => {
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+
+
+    $(".btn-submit").click(function(e){
+
+
+
+    e.preventDefault();
+
+
+
+    var name = $("input[name=name]").val();
+
+    var password = $("input[name=password]").val();
+
+    var email = $("input[name=email]").val();
+
+
+
+    $.ajax({
+
+    type:'POST',
+
+    url:"{{ route('ajaxRequest.post') }}",
+
+    data:{name:name, password:password, email:email},
+
+    success:function(data){
+
+        alert(data.success);
+
+    }
+
+    });
+
+
+
+    });
+    });
+    // $('#nombreDeTuBoton').trigger('click');
     function Opcioncambiada(){
-        var id_carrera = this.value;
+        var id_carrera = $rd.value;
         if (!id_carrera) {
             $("#nivel").html('<option value="">Seleccione Nivel</option>');
             $("#materia_id").html('<option value="">Seleccione Asignatura</option>');
@@ -141,7 +189,7 @@
     };
 
     function select_nivel(){
-        var n = this.value;
+        var n = $_nivel.value;
         var id = $rd.value;
         if (!n) {
            $("#materia_id").html('<option value="">Seleccione Asignatura</option>');
@@ -154,19 +202,12 @@
             $("#materia_id").html(html_select);
         });
         }
-        
-
-
-        // $.get('/docente-materias/create/{"'+ id_carrera +'"}/materias', function (data){
-        //     var html_select = '<option value="">Select materias</option>';
-        //     for (var i = 0; i < data.length; i++) {
-        //         html_select += '<option value="'+ data[i].id +'">"'+ data[i].nombre +'"</option>';
-        //         $nivel.html(html_select);
-        //     }
-        // });
-         
     };
-
+    console.log("Comenzo paso ");
+    Opcioncambiada();
+    console.log("Medio paso ");
+    select_nivel();
+    console.log("Termino paso ");
     $rd.addEventListener("change", Opcioncambiada);
     $_nivel.addEventListener("change", select_nivel);
 
