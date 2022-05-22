@@ -23,12 +23,3 @@
         
     </div>
 @endsection
-
-
-@section('script')
-    <!-- Page level custom scripts -->
-    <script src="js/admin/demo/chart-area-demo.js"></script>
-    <script src="js/admin/chart-pie-demo.js"></script>
-    <script src="js/admin/chart-bar-demo.js"></script>
-    
-@endsection
