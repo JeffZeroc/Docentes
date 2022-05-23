@@ -4,12 +4,12 @@
 <head>
 
     <meta charset="utf-8">
-    
+
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>@yield('title')</title>
     {{-- Logo Pagina --}}
-    <link rel="icon" href="{{ asset('img/ICOUTE.ico')}}" >    
-    
+    <link rel="icon" href="{{ asset('img/ICOUTE.ico') }}">
+
     <link href="{{ asset('css/admin/sb-admin-2.css') }}" rel="stylesheet">
     {{-- <link href="{{ asset('css/sidebar.css') }}" rel="stylesheet"> --}}
 
@@ -21,7 +21,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css" rel="stylesheet"> --}}
     @yield('css')
 
-    
+
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
 </head>
@@ -31,7 +31,7 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-        
+
         <!-- End of Sidebar -->
         @include('partials.sidebar_old')
         <!-- Content Wrapper -->
@@ -40,18 +40,19 @@
             <!-- Main Content -->
             <div id="content">
 
-                
+
                 <!-- Topbar -->
-                <nav class="navbar justify-content-end navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-                    
+                <nav
+                    class="navbar justify-content-end navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
                     <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-                            
+
                         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                             @yield('search')
                         </ul>
                         @include('partials.topbar')
                     </div>
-                    
+
                 </nav>
                 <!-- End of Topbar -->
 
@@ -76,37 +77,39 @@
     </div>
     <!-- End of Page Wrapper -->
 
-    
 
-    
-    
+
+
+
     <!-- Button trigger modal -->
     {{-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
         Launch demo modal
     </button> --}}
-  
+
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">¿Listo para salir?</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                Seleccione "Cerrar sesión" a continuación si está listo para finalizar su sesión actual.
-            </div>
-            <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-            <a class="btn btn-primary" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Cerrar Sesión</a>
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">¿Listo para salir?</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Seleccione "Cerrar sesión" a continuación si está listo para finalizar su sesión actual.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <a class="btn btn-primary" href="{{ route('logout') }}"
+                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Cerrar
+                        Sesión</a>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                         @csrf
                     </form>
+                </div>
             </div>
         </div>
-        </div>
     </div>
-      
+
 
 </body>
 <script src="{{ asset('admin/js/sb-admin-2.min.js') }}" defer></script>
@@ -129,9 +132,10 @@
 
 
 {{-- Script bootstrap --}}
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 {{-- Iconos "<i>" --}}
-<script src="https://kit.fontawesome.com/b99e675b6e.js"></script> 
+<script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
 
 
 {{-- Data Table --}}
@@ -146,13 +150,13 @@
 @yield('js')
 <script>
     $(document).ready(function() {
-        $('#example').DataTable( {
+        $('#example').DataTable({
             scrollY: '205px',
             scrollCollapse: false,
             paging: false,
-            
-        } );
-        $('#exampl').DataTable( {
+
+        });
+        $('#exampl').DataTable({
             scrollY: '250px',
             scrollCollapse: true,
             paging: false,
@@ -163,11 +167,10 @@
             dom: 'Bfrtip',
 
             lengthMenu: [
-                [ 10, 25, 50, -1 ],
-                [ '10 filas', '25 filas', '50 filas','Mostrar todo' ]
+                [10, 25, 50, -1],
+                ['10 filas', '25 filas', '50 filas', 'Mostrar todo']
             ],
-            buttons: [
-                ,'excel', 'pdf',
+            buttons: [, 'excel', 'pdf',
                 //Espacio
                 {
                     extend: 'spacer',
@@ -175,16 +178,14 @@
                     text: ''
                 },
                 //Fin Espacio
-                 'pageLength'
+                'pageLength'
             ]
-            
+
             // buttons: [
             //     'copy', 'csv', 'excel', 'pdf', 'print'
             // ]
-        } );
-    } );
-    
-    
+        });
+    });
 </script>
 
 

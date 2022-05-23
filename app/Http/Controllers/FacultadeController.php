@@ -21,10 +21,10 @@ class FacultadeController extends Controller
      */
     public function index()
     {
-        $facultades = Facultade::paginate();
+        $facultades = Facultade::get();
 
-        return view('facultade.index', compact('facultades'))
-            ->with('i', (request()->input('page', 1) - 1) * $facultades->perPage());
+        return view('facultade.index', compact('facultades'));
+            // ->with('i', (request()->input('page', 1) - 1) * $facultades->perPage());
     }
 
     /**

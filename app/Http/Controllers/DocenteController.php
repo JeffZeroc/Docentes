@@ -20,11 +20,11 @@ class DocenteController extends Controller
      */
     public function index()
     {
-        $docentes = Docente::paginate();
+        $docentes = Docente::get();
         
 
-        return view('docente.index', compact('docentes'))
-            ->with('i', (request()->input('page', 1) - 1) * $docentes->perPage());
+        return view('docente.index', compact('docentes'));
+            // ->with('i', (request()->input('page', 1) - 1) * $docentes->perPage());
     }
 
     

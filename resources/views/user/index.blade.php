@@ -1,6 +1,6 @@
 @extends('layouts.app_admin')
 
-@section('title','Usuarios')
+@section('title', 'Usuarios')
 
 @section('content')
     <div class="container-fluid">
@@ -14,17 +14,15 @@
                                 {{ __('Usuarios') }}
                             </span>
 
-                             <div class="float-right">
-                                <a href="{{ route('users.create') }}" 
-                                @if (Auth::user()->tipo == 'Colaborador')
-                                    class="btn btn-primary btn-sm float-right disabled"  
+                            <div class="float-right">
+                                <a href="{{ route('users.create') }}"
+                                    @if (Auth::user()->tipo == 'Colaborador') class="btn btn-primary btn-sm float-right disabled"  
                                 @else
-                                    class="btn btn-primary btn-sm float-right"
-                                @endif  
-                                data-placement="left">
-                                  {{ __('Nuevo Usuario') }}
+                                    class="btn btn-primary btn-sm float-right" @endif
+                                    data-placement="left">
+                                    {{ __('Nuevo Usuario') }}
                                 </a>
-                              </div>
+                            </div>
                         </div>
                     </div>
                     {{-- @if ($message = Session::get('success'))
@@ -38,43 +36,40 @@
                             <table id="example" class="table is-striped hover" style="width:100%">
                                 <thead class="thead">
                                     <tr align="center">
-                                        
-										<th scope="col">Name</th>
-										<th scope="col">Tipo</th>
-										<th scope="col">Email</th>
+
+                                        <th scope="col">Name</th>
+                                        <th scope="col">Tipo</th>
+                                        <th scope="col">Email</th>
 
                                         <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($users as $user)
-                                        <tr>                                            
-											<td>{{ $user->name }}</td>
-											<td>{{ $user->tipo }}</td>
-											<td>{{ $user->email }}</td>
+                                        <tr>
+                                            <td>{{ $user->name }}</td>
+                                            <td>{{ $user->tipo }}</td>
+                                            <td>{{ $user->email }}</td>
 
                                             <td align="center">
-                                                <form action="{{ route('users.destroy',$user->id) }}" method="POST">
-                                                    
-                                                    <a 
-                                                        @if ( Auth::user()->id == $user->id )
-                                                            class="btn btn-sm btn-success" 
+                                                <form action="{{ route('users.destroy', $user->id) }}" method="POST">
+
+                                                    <a @if (Auth::user()->id == $user->id) class="btn btn-sm btn-success" 
                                                         @else
                                                             @if (Auth::user()->tipo == 'Colaborador')
                                                                 class="btn btn-sm btn-success disabled"  
                                                             @else
-                                                                class="btn btn-sm btn-success" 
-                                                            @endif        
+                                                                class="btn btn-sm btn-success" @endif
                                                         @endif
 
-                                                        href="{{ route('users.edit',$user->id) }}"> <i class="fa fa-fw fa-edit"></i></a>
+                                                        href="{{ route('users.edit', $user->id) }}"> <i
+                                                            class="fa fa-fw fa-edit"></i></a>
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" 
-                                                        @if ( Auth::user()->tipo == 'Colaborador' || Auth::user()->id == $user->id )
-                                                            disabled  
-                                                        @endif 
-                                                        onclick="return confirm('¿Estas seguro de eliminar este usuario?')" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i></button>
+                                                    <button type="submit" @if (Auth::user()->tipo == 'Colaborador' || Auth::user()->id == $user->id) disabled @endif
+                                                        onclick="return confirm('¿Estas seguro de eliminar este usuario?')"
+                                                        class="btn btn-danger btn-sm"><i
+                                                            class="fa fa-fw fa-trash"></i></button>
                                                 </form>
                                             </td>
                                         </tr>
@@ -84,7 +79,7 @@
                         </div>
                     </div>
                 </div>
-                {!! $users->links() !!}
+                {{-- {!! $users->links() !!} --}}
             </div>
         </div>
     </div>

@@ -27,6 +27,7 @@ class DocenteMateria extends Model
 		'docente_id' => 'required',
 		'periodo_id' => 'required',
 		'materia_id' => 'required',
+        'paralelo' => 'required',
     ];
 
     protected $perPage = 20;
@@ -36,7 +37,7 @@ class DocenteMateria extends Model
      *
      * @var array
      */
-    protected $fillable = ['docente_id','periodo_id','materia_id','codigo'];
+    protected $fillable = ['docente_id','periodo_id','materia_id','codigo','paralelo'];
 
 
     /**

@@ -7,6 +7,7 @@ use App\Http\Controllers\FacultadeController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MateriaController;
 use App\Http\Controllers\PeriodoController;
+use App\Http\Controllers\PruebaController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 // use Illuminate\Auth\Events\PasswordReset;
@@ -54,7 +55,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('/home/docente-materias', DocenteMateriaController::class);
     Route::get('/home/docente-materias/create/{id}/nivel', [DocenteMateriaController::class, 'nivel']);
     Route::get('/home/docente-materias/create/{id}/{n}', [DocenteMateriaController::class, 'materias']);
-    Route::post('ajaxRequest', [DocenteMateriaController::class, 'ajaxRequestPost'])->name('ajaxRequest.post');
+    
     Route::get('/home/inicio', function(){
         return view('home');
     });

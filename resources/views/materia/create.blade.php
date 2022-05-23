@@ -68,6 +68,7 @@
                                         </div>
                                         
                                     </div>
+                                    <br>
                                     <div class="row">
                                         <div class="col-md-4">
                                             <div class="form-group">
@@ -102,17 +103,6 @@
                                                 @enderror 
                                             </div>
                                         </div>
-                                        {{-- <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label> Horas Docente</label>
-                                                <input id="hora_d" type="text" name="hora_d" class="form-control @error('hora_d') is-invalid @enderror" value="{{  old('hora_d') }}" placeholder="1-70" autofocus>
-                                                @error('hora_d')
-                                                    <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                    </span>
-                                                @enderror 
-                                            </div>
-                                        </div> --}}
                                     </div>
                                 </div>
                                 <br>

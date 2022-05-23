@@ -24,10 +24,10 @@ class MateriaController extends Controller
      */
     public function index()
     {
-        $materias = Materia::paginate();
+        $materias = Materia::get();
 
-        return view('materia.index', compact('materias'))
-            ->with('i', (request()->input('page', 1) - 1) * $materias->perPage());
+        return view('materia.index', compact('materias'));
+            // ->with('i', (request()->input('page', 1) - 1) * $materias->perPage());
     }
 
     public function getCategoria(Request $request, $id){

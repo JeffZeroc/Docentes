@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Carrera;
-use App\Models\Docente;
 use App\Models\DocenteMateria;
 use App\Models\Materia;
 use App\Models\Periodo;
@@ -23,10 +22,12 @@ class DocenteMateriaController extends Controller
      */
     public function index()
     {
-        $docenteMaterias = DocenteMateria::paginate(25);
-
-        return view('docente-materia.index', compact('docenteMaterias'))
-            ->with('Anterior', (request()->input('page', 1) - 1) * $docenteMaterias->perPage());
+        $docenteMaterias = DocenteMateria::get();
+        $i=0;
+        
+        // return $docenteMaterias;
+        return view('docente-materia.index', compact('docenteMaterias','i'));
+            
     }
 
     /**
@@ -79,8 +80,10 @@ class DocenteMateriaController extends Controller
                     $docenteMateria->docente_id = $request->docente_id;
                     $docenteMateria->periodo_id = $request->periodo_id;
                     $docenteMateria->materia_id = $request->materia_id;
+                    $docenteMateria->paralelo = $request->paralelo;
                     $docenteMateria->codigo = $request->codigo;
                     $docenteMateria->save();
+
                     return response()->json(['success'=>'4']);
 
                 } catch (\Throwable $th) {
@@ -116,12 +119,11 @@ class DocenteMateriaController extends Controller
     public function edit($id)
     {
         $docenteMateria = DocenteMateria::find($id);
-        $docentes = Docente::get();
+        $docentes = DB::table('docentes')->where('id',$docenteMateria->docente_id )->get();
         $periodos = Periodo::get();
-        
-        $materias = DB::select('select materias.id,CONCAT(materias.nombre,", ",carreras.nombre) as nombre from materias,carreras where materias.carrera_id = carreras.id');
-
-        return view('docente-materia.edit', compact('docenteMateria','docentes','periodos','materias'));
+        $materias = Materia::get();
+        $carreras = Carrera::get();
+        return view('docente-materia.create', compact('docenteMateria','docentes','periodos','materias','carreras'));
     }
 
     /**
@@ -131,12 +133,34 @@ class DocenteMateriaController extends Controller
      * @param  DocenteMateria $docenteMateria
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, DocenteMateria $docenteMateria)
+    public function update(Request $request)
     {
-        request()->validate(DocenteMateria::$rules);
+        try {
+            request()->validate(DocenteMateria::$rules); 
+            try {
+                $this->validate($request, [
+                    'codigo' => 'unique:docente_materias',
+                ]); 
+                try {
+                    $docenteMateria = DocenteMateria::find($request->id);
+                    $docenteMateria->docente_id = $request->docente_id;
+                    $docenteMateria->periodo_id = $request->periodo_id;
+                    $docenteMateria->materia_id = $request->materia_id;
+                    $docenteMateria->paralelo = $request->paralelo;
+                    $docenteMateria->codigo = $request->codigo;
+                    $docenteMateria->save();
 
-        $docenteMateria->update($request->all());
+                    return response()->json(['success'=>'4']);
 
+                } catch (\Throwable $th) {
+                    return response()->json(['success'=>'3']);
+                }
+            } catch (\Throwable $th) {
+                return response()->json(['success'=>'2']);
+            }
+        } catch (\Throwable $th) {
+            return response()->json(['success'=>'1']);
+        }
         return redirect()->route('docente-materias.index')
         ->with('message', 'Registro actualizado correctamente.');
     }

@@ -1,6 +1,6 @@
 @extends('layouts.app_admin')
 
-@section('title','Nueva Facultades')
+@section('title', 'Nueva Facultades')
 
 @section('content')
     <section class="content container-fluid">
@@ -14,24 +14,29 @@
                         <span class="card-title">Nueva Facultad</span>
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="{{ route('facultades.store') }}"  role="form" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('facultades.store') }}" role="form"
+                            enctype="multipart/form-data">
                             @csrf
 
                             <div class="box box-info padding-1">
                                 <div class="box-body">
-                                    
+
                                     <div class="form-group">
                                         <div class="col-md-6">
-                                            <label for="nombre" >Nombre</label>
-                                            <input id="nombre" type="text" name="nombre" class="form-control @error('nombre') is-invalid @enderror" value="{{ old('nombre') }}" placeholder="Nombre Facultad" autofocus>
+                                            <label for="nombre">Nombre</label>
+                                            <input id="nombre" type="text" name="nombre"
+                                                class="form-control @error('nombre') is-invalid @enderror"
+                                                value="{{ old('nombre') }}" placeholder="Nombre Facultad" autofocus>
                                             @error('nombre')
                                                 <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
+                                                    <strong>{{ $message }}</strong>
                                                 </span>
-                                            @enderror   
+                                            @enderror
                                         </div>
                                     </div>
-                            
+                                </div>
+                                <div>
+                                    <br>
                                 </div>
                                 <div class="box-footer mt20">
                                     <a href="/home/facultades" class="btn btn-secondary">Volver</a>

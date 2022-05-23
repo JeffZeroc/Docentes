@@ -27,6 +27,7 @@ class CreateDocenteMateriasTable extends Migration
             ->constrained('materias')
             ->onUpdate('cascade');
             $table->integer('codigo');
+            $table->string('paralelo');
             $table->timestamps();
         });
     }
