@@ -37,7 +37,7 @@
 
 
                     <a class="nav-link disabled mt-lg-3" href="#">
-                        <span> SISTEMA GESTOR DISTRIBUTIVO DE DOCENTES</span></a>
+                        <span> SISTEMA GESTOR DE REGISTRO DOCENTE</span></a>
 
                     <div class="nav-link">
                         @guest
