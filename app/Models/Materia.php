@@ -29,7 +29,7 @@ class Materia extends Model
 		'carrera_id' => 'required',
         'nivel' => 'required|numeric',
             'nombre' => 'required|max:255',
-            'codigo' => 'required|string|max:15|unique:materias',
+            'codigo' => 'required|string|min:11|unique:materias',
             'hora_a' => 'required|numeric',
             'hora_p' => 'required|numeric',
             
