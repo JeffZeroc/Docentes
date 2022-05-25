@@ -24,7 +24,7 @@ class MateriaController extends Controller
      */
     public function index()
     {
-        $materias = Materia::get();
+        $materias = Materia::all();
 
         return view('materia.index', compact('materias'));
             // ->with('i', (request()->input('page', 1) - 1) * $materias->perPage());

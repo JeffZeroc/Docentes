@@ -21,7 +21,7 @@ class FacultadeController extends Controller
      */
     public function index()
     {
-        $facultades = Facultade::get();
+        $facultades = Facultade::all();
 
         return view('facultade.index', compact('facultades'));
             // ->with('i', (request()->input('page', 1) - 1) * $facultades->perPage());

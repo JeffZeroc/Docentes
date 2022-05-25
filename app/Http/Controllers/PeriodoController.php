@@ -20,7 +20,7 @@ class PeriodoController extends Controller
      */
     public function index()
     {
-        $periodos = Periodo::get();
+        $periodos = Periodo::all();
         return view('periodo.index', compact('periodos'));
             // ->with('i', (request()->input('page', 1) - 1) * $periodos->perPage());
     }

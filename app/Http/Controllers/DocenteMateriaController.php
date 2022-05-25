@@ -9,6 +9,7 @@ use App\Models\Materia;
 use App\Models\Periodo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redirect;
 
 /**
  * Class DocenteMateriaController
@@ -23,7 +24,7 @@ class DocenteMateriaController extends Controller
      */
     public function index()
     {
-        $docenteMaterias = DocenteMateria::get();
+        $docenteMaterias = DocenteMateria::all();
         $i = 0;
 
         // return $docenteMaterias;
@@ -37,14 +38,19 @@ class DocenteMateriaController extends Controller
      */
     public function create()
     {
-        $docenteMateria = new DocenteMateria();
-        $p = Periodo::where('estado', '1')->first();
-        $docentes = DB::table('docentes')->where('estado', 'Activo')->where('periodo','!=',$p->id)->get();
-        $periodos = Periodo::get();
-        $materias = Materia::get();
-        $carreras = Carrera::get();
-        // return $docentes;
-        return view('docente-materia.create', compact('docenteMateria', 'docentes', 'periodos', 'materias', 'carreras'));
+        try {
+            $docenteMateria = new DocenteMateria();
+            $p = Periodo::where('estado', '1')->first();
+            $docentes = DB::table('docentes')->where('estado', 'Activo')->where('periodo', '!=', $p->id)->get();
+            $periodos = Periodo::get();
+            $materias = Materia::get();
+            $carreras = Carrera::get();
+            // return $docentes;
+            return view('docente-materia.create', compact('docenteMateria', 'docentes', 'periodos', 'materias', 'carreras'));
+        } catch (\Throwable $th) {
+            return redirect()->route('docente-materias.index')
+            ->with('danger', 'Asegurese de tener registrado un Periodo Académico.');
+        }
     }
 
 

@@ -20,7 +20,7 @@ class DocenteController extends Controller
      */
     public function index()
     {
-        $docentes = Docente::get();
+        $docentes = Docente::all();
         
 
         return view('docente.index', compact('docentes'));
