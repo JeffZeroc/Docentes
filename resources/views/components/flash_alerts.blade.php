@@ -1,4 +1,5 @@
 @if ( session('message') )        
+
     @component( 'components.alert' )
         @slot( 'class', 'success' )
         @slot( 'name', 'Éxito' )

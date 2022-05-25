@@ -102,7 +102,7 @@
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                <label> Horas Autonomas</label>
+                                                <label> Horas Autónomas</label>
                                                 <input id="hora_a" type="text" name="hora_a" class="form-control @error('hora_a') is-invalid @enderror" value="{{  $materia->hora_a }}" placeholder="1-70" autofocus>
                                                 @error('hora_a')
                                                     <span class="invalid-feedback" role="alert">

@@ -128,6 +128,7 @@ class DocenteController extends Controller
         $docentes->fecha_suspencion = $request->fecha_suspencion;
         $docentes->relacion_dependencia = $request->relacion_dependencia;
         $docentes->dedicacion = $request->dedicacion;
+        $docentes->periodo = 0;
 
         //Relación Dependencia
         if ($request->relacion_dependencia=='Nombramiento') {
@@ -301,6 +302,7 @@ class DocenteController extends Controller
         $docentes->relacion_dependencia = $request->relacion_dependencia;
         
         $docentes->dedicacion = $request->dedicacion;
+        
 
         //Relación Dependencia
         if ($request->relacion_dependencia=='Nombramiento') {
@@ -352,9 +354,6 @@ class DocenteController extends Controller
     public function destroy($id)
     {
         $docente = Docente::find($id);
-        
-        return redirect()->route('docentes.index')
-        ->with('message', 'Registro eliminado correctamente.');
         
         try {
             $docente->delete();

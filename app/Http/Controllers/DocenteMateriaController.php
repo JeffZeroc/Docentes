@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Carrera;
+use App\Models\Docente;
 use App\Models\DocenteMateria;
 use App\Models\Materia;
 use App\Models\Periodo;
@@ -23,11 +24,10 @@ class DocenteMateriaController extends Controller
     public function index()
     {
         $docenteMaterias = DocenteMateria::get();
-        $i=0;
-        
+        $i = 0;
+
         // return $docenteMaterias;
-        return view('docente-materia.index', compact('docenteMaterias','i'));
-            
+        return view('docente-materia.index', compact('docenteMaterias', 'i'));
     }
 
     /**
@@ -38,28 +38,30 @@ class DocenteMateriaController extends Controller
     public function create()
     {
         $docenteMateria = new DocenteMateria();
-        $docentes = DB::table('docentes')->where('estado', 'Activo')->get();
+        $p = Periodo::where('estado', '1')->first();
+        $docentes = DB::table('docentes')->where('estado', 'Activo')->where('periodo','!=',$p->id)->get();
         $periodos = Periodo::get();
         $materias = Materia::get();
         $carreras = Carrera::get();
-        
-        return view('docente-materia.create', compact('docenteMateria','docentes','periodos','materias','carreras'));
+        // return $docentes;
+        return view('docente-materia.create', compact('docenteMateria', 'docentes', 'periodos', 'materias', 'carreras'));
     }
-    
 
-    public function materias($id,$n){
+
+    public function materias($id, $n)
+    {
         return Materia::where('carrera_id', $id)
-        ->where('nivel', $n)
-        ->get();
-
+            ->where('nivel', $n)
+            ->get();
     }
-    public function nivel($id){
+    public function nivel($id)
+    {
         return Carrera::where('id', $id)->get();
     }
 
-    
-    
-        
+
+
+
 
     /**
      * Store a newly created resource in storage.
@@ -70,12 +72,13 @@ class DocenteMateriaController extends Controller
     public function store(Request $request)
     {
         try {
-            request()->validate(DocenteMateria::$rules); 
+            request()->validate(DocenteMateria::$rules);
             try {
                 $this->validate($request, [
                     'codigo' => 'unique:docente_materias',
-                ]); 
+                ]);
                 try {
+
                     $docenteMateria = new DocenteMateria;
                     $docenteMateria->docente_id = $request->docente_id;
                     $docenteMateria->periodo_id = $request->periodo_id;
@@ -84,16 +87,18 @@ class DocenteMateriaController extends Controller
                     $docenteMateria->codigo = $request->codigo;
                     $docenteMateria->save();
 
-                    return response()->json(['success'=>'4']);
-
+                    $docente = Docente::find($request->docente_id);
+                    $docente->periodo = $request->periodo_id;
+                    $docente->save();
+                    return response()->json(['success' => '4']);
                 } catch (\Throwable $th) {
-                    return response()->json(['success'=>'3']);
+                    return response()->json(['success' => '3']);
                 }
             } catch (\Throwable $th) {
-                return response()->json(['success'=>'2']);
+                return response()->json(['success' => '2']);
             }
         } catch (\Throwable $th) {
-            return response()->json(['success'=>'1']);
+            return response()->json(['success' => '1']);
         }
     }
 
@@ -119,11 +124,11 @@ class DocenteMateriaController extends Controller
     public function edit($id)
     {
         $docenteMateria = DocenteMateria::find($id);
-        $docentes = DB::table('docentes')->where('id',$docenteMateria->docente_id )->get();
+        $docentes = DB::table('docentes')->where('id', $docenteMateria->docente_id)->get();
         $periodos = Periodo::get();
         $materias = Materia::get();
         $carreras = Carrera::get();
-        return view('docente-materia.create', compact('docenteMateria','docentes','periodos','materias','carreras'));
+        return view('docente-materia.create', compact('docenteMateria', 'docentes', 'periodos', 'materias', 'carreras'));
     }
 
     /**
@@ -136,11 +141,11 @@ class DocenteMateriaController extends Controller
     public function update(Request $request)
     {
         try {
-            request()->validate(DocenteMateria::$rules); 
+            request()->validate(DocenteMateria::$rules);
             try {
                 $this->validate($request, [
                     'codigo' => 'unique:docente_materias',
-                ]); 
+                ]);
                 try {
                     $docenteMateria = DocenteMateria::find($request->id);
                     $docenteMateria->docente_id = $request->docente_id;
@@ -150,19 +155,18 @@ class DocenteMateriaController extends Controller
                     $docenteMateria->codigo = $request->codigo;
                     $docenteMateria->save();
 
-                    return response()->json(['success'=>'4']);
-
+                    return response()->json(['success' => '4']);
                 } catch (\Throwable $th) {
-                    return response()->json(['success'=>'3']);
+                    return response()->json(['success' => '3']);
                 }
             } catch (\Throwable $th) {
-                return response()->json(['success'=>'2']);
+                return response()->json(['success' => '2']);
             }
         } catch (\Throwable $th) {
-            return response()->json(['success'=>'1']);
+            return response()->json(['success' => '1']);
         }
         return redirect()->route('docente-materias.index')
-        ->with('message', 'Registro actualizado correctamente.');
+            ->with('message', 'Registro actualizado correctamente.');
     }
 
     /**
@@ -172,14 +176,18 @@ class DocenteMateriaController extends Controller
      */
     public function destroy($id)
     {
-        $docenteMateria = DocenteMateria::find($id)->delete();
+        $docenteMateria = DocenteMateria::find($id);
 
-        
-
+        try {
+            $d = Docente::find($docenteMateria->docente_id);
+            $d->periodo = '0';
+            $d->save();
+            $docenteMateria->delete();
             return redirect()->route('docente-materias.index')
-            ->with('message', 'Registro eliminado correctamente');
-            
-            
-        
+                ->with('message', 'Registro eliminado correctamente');
+        } catch (\Throwable $th) {
+            return redirect()->route('docente-materias.index')
+                ->with('danger', 'Registro imposible de eliminar');
+        }
     }
 }

@@ -53,8 +53,7 @@
                                             <tr>
                                                 <td>{{ ++$i }}</td>
                                                 <td>{{ $docenteMateria->docente->cedula }}</td>
-                                                <td>{{ $docenteMateria->docente->apellidos }}
-                                                    {{ $docenteMateria->docente->nombres }}</td>
+                                                <td>{{ $d = $docenteMateria->docente->apellidos }} {{ $docenteMateria->docente->nombres }}</td>
                                                 <td>{{ $docenteMateria->docente->sexo }}</td>
                                                 <td>{{ $docenteMateria->docente->titulo_3_n }}</td>
                                                 <td>{{ $docenteMateria->docente->titulo_4_n }}</td>
