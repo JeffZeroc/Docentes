@@ -106,8 +106,7 @@ class PeriodoController extends Controller
             'codigo' => [
                 'required',
                 Rule::unique('periodos')->ignore($periodo->id),
-                'max:11',
-                'min:11',
+                'min:3',
             ],
             'inicio_periodo' => 'required',
             'fin_periodo' => 'required',
